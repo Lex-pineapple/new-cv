@@ -1,3 +1,263 @@
+@use 'sass:math';
+@use 'sass:list';
+
+@function withShape($n) {
+    $m: ();
+    $d: calc(50%/(math.cos(calc(180deg/$n))*(1 + math.tan(calc(180deg/$n)))));
+    $m: list.append($m,from 
+      50% + $d*math.cos(0) 
+      50% + $d*math.sin(0),comma);
+    @for $i from 1 through $n {
+      $m: list.append($m,arc to 
+        50% + $d*math.cos(calc($i*360deg/$n))
+        50% + $d*math.sin(calc($i*360deg/$n))
+        of 1% cw,comma);
+    } 
+    @return $m; 
+}
+
+@function withStar($n) {
+  $m: ();
+  $r: calc(50%/(1 + 1/math.sin(calc(180deg/$n))));
+  $d: calc(50%/(math.tan(calc(180deg/$n)) + 1/math.cos(calc(180deg/$n))));
+  $m: list.append($m,from 
+    50% + $d*math.cos(0) 
+    50% + $d*math.sin(0),comma);
+  @for $i from 1 through $n {
+    $m: list.append($m,arc to 
+      50% + $d*math.cos(calc($i*360deg/$n))
+      50% + $d*math.sin(calc($i*360deg/$n))
+      of $r,comma);
+  } 
+  @return $m;
+}
+
 .root {
-  background: pink;
+  background: var(--bg-main);
+  justify-content: center;
+  align-items: center;
+  padding: 0 60px;
+}
+
+.sectionWrapper {
+  width: 1440px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.headline {
+  position: absolute;
+  top: 0;
+  color: var(--text-main);
+  left: 0;
+  font-weight: 600;
+  font-size: 78px;
+  line-height: 78px;
+
+  &_color {
+    color: var(--accent-main);
+  }
+}
+
+.desc {
+  &__superScript {
+    color: var(--accent-main);
+    font-weight: 900;
+    background: var(--bg-main);
+
+    &::after {
+      content: '';
+      display: inline-block;
+      height: 2px;
+      width: 20%;
+      background: var(--accent-main);
+      position: absolute;
+      top: 13px;
+      margin-left: 20px;
+    }
+  }
+
+  &__wrapper {
+    color: var(--text-main);
+    overflow: hidden;
+    width: 400px;
+    top: 45%;
+    position: absolute;
+    right: 0;
+  }
+
+  &__headline {
+    font-size: 32px;
+    margin-top: 10px;
+    line-height: 32px;
+    font-weight: 900;
+    margin-bottom: 40px;
+  }
+}
+
+// box with image
+.box {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin: 250px 40px 20px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 500px;
+    height: 500px;
+    background: transparent;
+    border-radius: 50%;
+    z-index: 1;
+    box-shadow: 0 100px 0 40px #222;
+  }
+}
+
+.circleBg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(60deg, #a4cfff, #ff5b64);
+  border-radius: 50%;
+}
+
+.mainImg {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+}
+
+.scrollPrompter {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 2px solid var(--accent-main);
+  border-bottom: 2px solid var(--accent-main);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg) translateY(0);
+  box-sizing: border-box;
+  animation: bounce 1s infinite alternate;
+  z-index: 10;
+}
+
+// contacts
+
+.contacts {
+  list-style: none;
+  padding: 0;
+
+  &__item {
+    line-height: 16px;
+  }
+
+  &__link {
+    color: var(--accent-main);
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 14px;
+  }
+}
+
+// langSwitcher
+
+.langSwitcher {
+  &__wrapper {
+    color: var(--text-main);
+    position: absolute;
+    left: 10%;
+    bottom: 10%;
+  }
+
+  &__container {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 50px;
+  }
+
+  &__item {
+    font-weight: 600;
+
+    &_active {
+      color: var(--accent-main);
+      font-weight: 900;
+    }
+  }
+}
+
+// shapes
+
+.shape {
+  &_circle {
+    position: absolute;
+    top: 20px;
+    right: 10%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(var(--accent-main), #b2affc);
+  }
+
+  &_flower {
+    z-index: 10;
+    width: 200px;
+    aspect-ratio: 1;
+    position: absolute;
+    left: 10%;
+    bottom: 20%;
+    background: linear-gradient(60deg,#b2affc,#FF9C5B);
+  }
+
+  &_clover {
+    z-index: 10;
+    width: 150px;
+    aspect-ratio: 1;
+    position: absolute;
+    right: 15%;
+    top: 10%;
+    background: linear-gradient(60deg,#b2affc,#615bff);
+    clip-path: shape(#{withShape(4)});  
+  }
+
+  &_star {
+    z-index: 10;
+    width: 200px;
+    aspect-ratio: 1;
+    position: absolute;
+    right: 7%;
+    top: 7%;
+    background: linear-gradient(60deg,#f9affc,#615bff);
+    clip-path: shape(#{withStar(4)});  
+  }
+
+  &_star_left {
+    z-index: 10;
+    width: 200px;
+    aspect-ratio: 1;
+    position: absolute;
+    left: 5%;
+    top: 69%;
+    background: linear-gradient(60deg,#aff3fc,#fff75b);
+    clip-path: shape(#{withStar(4)});  
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0) rotate(-45deg);
+  }
+  to {
+    transform: translateY(-20px) rotate(-45deg);
+  }
 }

@@ -21,15 +21,23 @@ export const Header = ({ onLinkClick }: THeader) => {
 
   return (
     <header className={styles.root}>
-      <nav>
-        {LINKS.map((link) => (
-          <HeaderLink
-            key={link.name}
-            onClick={(e) => onAnchorClick(e, link.href)}
-            {...link}
-          />
-        ))}
-      </nav>
+      <div className={styles.contentWraper}>
+        <div className={styles.logoWrapper}>
+          <img src="logo.svg" />
+        </div>
+        <nav>
+          <ul className={styles.linksWrapper}>
+            {LINKS.map((link) => (
+              <li key={link.name}>
+                <HeaderLink
+                  onClick={(e) => onAnchorClick(e, link.href)}
+                  {...link}
+                />
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
     </header>
   );
 };

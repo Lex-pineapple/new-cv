@@ -1,0 +1,10 @@
+.root {
+  text-decoration: none;
+  color: white;
+  font-weight: 900;
+  transition: color .3s ease-in-out;
+
+  &:hover {
+    color: var(--accent-main);
+  }
+}

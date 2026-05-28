@@ -1,6 +1,53 @@
 .root {
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
-  background: red;
-  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    #322b2e,
+    rgba(#eb8fa9, 0)
+  );
+  height: 100px;
+  z-index: 10;
+}
+
+.contentWraper {
+  display: flex;
+  align-items: center;
+  max-width: 1440px;
+  margin: 20px auto 0;
+  padding: 0 20px;
+}
+
+.logoWrapper {
+  background: #1d1d1d;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 150px;
+  transition: background .3s ease-out;
+
+  & img {
+    filter: invert(68%) sepia(94%) saturate(3086%) hue-rotate(318deg) brightness(101%) contrast(98%);
+    transition: filter .3s ease-in;
+
+    &:hover {
+      filter: none;
+    }
+  }
+
+  &:hover {
+    background: white;
+  }
+}
+
+.linksWrapper {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
 }
