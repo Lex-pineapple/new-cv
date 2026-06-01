@@ -99,8 +99,8 @@ function App() {
       <Header onLinkClick={onHeaderLinkClick} />
       <div className={styles.viewport}>
         <div id="content" className={styles.content} ref={containerRef}>
-          <Main className={styles.fullSlide} />
-          <About className={styles.fullSlide} />
+          {/* <Main className={styles.fullSlide} />
+          <About className={styles.fullSlide} /> */}
           <Stack className={styles.fullSlide} />
           <Projects className={styles.fullSlide} ref={projectsRef} />
           <Future className={styles.fullSlide} />

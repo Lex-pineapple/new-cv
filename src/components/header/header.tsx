@@ -4,6 +4,7 @@ import styles from "./header.module.scss";
 const LINKS = [
   { name: "Домой", href: "#main" },
   { name: "Обо мне", href: "#about" },
+  { name: "Мой стэк", href: "#stack" },
   { name: "Проекты", href: "#projects" },
   { name: "Будущее", href: "#future" },
   { name: "Контакты", href: "#contacts" },

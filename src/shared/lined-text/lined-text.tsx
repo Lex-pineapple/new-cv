@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from "react";
+import type { PropsWithChildren, RefObject } from "react";
 import styles from "./lined-text.module.scss";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -11,22 +11,36 @@ gsap.registerPlugin(SplitText);
 type TLinedText = {
   trigger?: ScrollTrigger.Vars;
   className: string;
+  ref?: RefObject<HTMLSpanElement | null>;
+  linePosition?: "right" | "center";
+  appear?: "move" | "fade-in";
 };
 
 export const LinedText = ({
   children,
   trigger,
+  ref,
   className,
+  linePosition = "right",
+  appear = "move",
 }: PropsWithChildren<TLinedText>) => {
   useGSAP(() => {
     if (trigger) {
-      gsap.from(`.${className}`, {
-        x: 200,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: trigger,
-      });
+      if (appear === "move")
+        gsap.from(`.${className}`, {
+          x: 200,
+          opacity: 0,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: trigger,
+        });
+      else
+        gsap.from(`.${className}`, {
+          opacity: 0,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: trigger,
+        });
     } else {
       const split = SplitText.create(`.${className}`, { type: "chars" });
       gsap.from(split.chars, {
@@ -41,5 +55,16 @@ export const LinedText = ({
     }
   });
 
-  return <span className={cn(styles.root, className)}>{children}</span>;
+  return (
+    <span
+      ref={ref}
+      className={cn(
+        styles.root,
+        className,
+        styles[`linePosition_${linePosition}`],
+      )}
+    >
+      {children}
+    </span>
+  );
 };

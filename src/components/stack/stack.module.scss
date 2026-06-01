@@ -8,5 +8,55 @@
   width: 1440px;
   position: relative;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+
+}
+
+.stack {
+  &__wrapper {
+    display: grid;
+    width: 100%;
+    grid-template-columns: auto auto;
+    color: var(--text-main);
+  }
+
+  &__right {
+    justify-self: flex-end;
+    text-align: end;
+  }
+
+  &__item:last-child {
+    justify-self: center;
+    grid-column: span 2;
+    text-align: center;
+  }
+}
+
+.stackInner {
+  display: flex;
+  margin: 20px 0 20px;
+  gap: 20px;
+
+  &__item {
+    border: 2px solid var(--local-color);
+    background: var(--local-color);
+    color: black;
+    border-radius: 8px;
+    padding: 4px 8px;
+    cursor: pointer;
+    z-index: 10;
+    transition: box-shadow 0.3s ease-in;
+    border: 1px solid #ffffff61;
+    
+    &:hover {
+      box-shadow: 
+      0 0 5px #fff,               
+      0 0 10px var(--local-color),           
+      0 0 20px var(--local-color),            
+      0 0 40px var(--local-color),           
+      inset 0 0 10px var(--local-color);  
+    }
+  }
 }
