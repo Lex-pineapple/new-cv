@@ -288,17 +288,20 @@ const stackInfo = [
       {
         icon: "",
         name: "Docker + Docker Compose",
-        description: "",
+        description:
+          "Картельные сговоры не допускают ситуации, при которой диаграммы связей и по сей день остаются уделом либералов, которые жаждут быть преданы социально-демократической анафеме. Сложно сказать, почему некоторые особенности внутренней политики являются только методом политического участия и описаны максимально подробно.",
       },
       {
         icon: "",
         name: "Gitlab CI",
-        description: "",
+        description:
+          "Картельные сговоры не допускают ситуации, при которой диаграммы связей и по сей день остаются уделом либералов, которые жаждут быть преданы социально-демократической анафеме. Сложно сказать, почему некоторые особенности внутренней политики являются только методом политического участия и описаны максимально подробно.",
       },
       {
         icon: "",
         name: "AWS CDK",
-        description: "",
+        description:
+          "Картельные сговоры не допускают ситуации, при которой диаграммы связей и по сей день остаются уделом либералов, которые жаждут быть преданы социально-демократической анафеме. Сложно сказать, почему некоторые особенности внутренней политики являются только методом политического участия и описаны максимально подробно.",
       },
     ],
     color: "#5A6291",
@@ -311,6 +314,7 @@ export const Stack = ({ className }: TWithClassname) => {
   const ref1 = useRef(null);
   const itemRefs = useRef([]);
   const [paths, setPaths] = useState([]);
+  const [openIdx, setOpenIdx] = useState<string | null>(null);
 
   const updatePath = () => {
     if (!containerRef.current || !headerRef.current || !itemRefs.current.length)
@@ -438,10 +442,29 @@ export const Stack = ({ className }: TWithClassname) => {
                       "--local-color": item.color,
                     }}
                   >
-                    {item.children.map((childItem) => {
+                    {item.children.map((childItem, innerIdx) => {
+                      const createdIdx = `${idx}-${innerIdx}`;
+
                       return (
-                        <div className={styles.stackInner__item}>
-                          {childItem.name}
+                        <div
+                          className={cn(styles.stackInner__wrapper, {
+                            [styles.stackInner__wrapper_open]:
+                              openIdx === createdIdx,
+                          })}
+                        >
+                          <div
+                            className={styles.stackInner__item}
+                            onClick={() => {
+                              setOpenIdx(
+                                openIdx === createdIdx ? null : createdIdx,
+                              );
+                            }}
+                          >
+                            {childItem.name}
+                          </div>
+                          <div className={styles.stackInner__descr}>
+                            {childItem.description}
+                          </div>
                         </div>
                       );
                     })}
