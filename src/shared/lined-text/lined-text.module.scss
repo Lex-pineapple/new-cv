@@ -1,0 +1,16 @@
+.root {
+  color: var(--accent-main);
+  font-weight: 900;
+  background: var(--bg-main);
+
+  &::after {
+    content: '';
+    display: inline-block;
+    height: 2px;
+    width: 20%;
+    background: var(--accent-main);
+    position: absolute;
+    top: 13px;
+    margin-left: 20px;
+  }
+}

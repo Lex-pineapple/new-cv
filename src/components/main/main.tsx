@@ -6,6 +6,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import TextPlugin from "gsap/TextPlugin";
+import { LinedText } from "~/shared/lined-text";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(SplitText);
@@ -112,17 +113,6 @@ export const Main = ({ className }: TWithClassname) => {
           ease: "sine.out",
         });
 
-        const split = SplitText.create("#desc-sup", { type: "chars" });
-
-        gsap.from(split.chars, {
-          opacity: 0.1,
-          scale: 0.8,
-          filter: "blur(4px)",
-          stagger: { each: 0.06, from: "center" },
-          duration: 0.4,
-          ease: "power2.out",
-        });
-
         gsap.from("#desc-title", {
           x: 200,
           opacity: 0,
@@ -172,9 +162,7 @@ export const Main = ({ className }: TWithClassname) => {
           </div>
         </div>
         <div className={styles.desc__wrapper}>
-          <span id="desc-sup" className={styles.desc__superScript}>
-            Frontend-разработчик
-          </span>
+          <LinedText className="main-hr">Frontend-разработчик</LinedText>
           <p id="desc-title" className={styles.desc__headline}>
             Оживляю макеты с помощью чистого кода и передовых технологий
           </p>

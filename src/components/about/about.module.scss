@@ -1,3 +1,42 @@
 .root {
-  background: green;
+  justify-content: center;
+  align-items: center;
+  padding: 0 60px;
+  position: relative;
+}
+
+.sectionWrapper {
+  width: 1440px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.about {
+  &__header, &__text {
+    color: var(--text-main);
+  }
+
+  &__header {
+    font-size: 64px;
+    line-height: 60px;
+    font-weight: 800;
+    max-width: 70%;
+    margin: 30px 0;
+  }
+
+  &__text {
+    margin: 20px 0;
+    max-width: 70%;
+  }
+}
+
+.line {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  right: -30%;
+  mask-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1), rgba(0,0,0,0));
+
 }

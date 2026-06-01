@@ -11,6 +11,7 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { Stack } from "~components/stack";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
@@ -30,7 +31,7 @@ function App() {
             endTrigger: "#projects",
             end: "bottom bottom",
             snap: {
-              snapTo: 1 / 2,
+              snapTo: 1 / 3,
               duration: { min: 0.25, max: 0.75 },
               delay: 0.125,
               ease: "power1.inOut",
@@ -100,6 +101,7 @@ function App() {
         <div id="content" className={styles.content} ref={containerRef}>
           <Main className={styles.fullSlide} />
           <About className={styles.fullSlide} />
+          <Stack className={styles.fullSlide} />
           <Projects className={styles.fullSlide} ref={projectsRef} />
           <Future className={styles.fullSlide} />
           <Contacts className={styles.fullSlide} />
