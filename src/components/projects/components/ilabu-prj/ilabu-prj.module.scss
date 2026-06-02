@@ -1,0 +1,36 @@
+.companyLogo {
+  background: white;
+  width: fit-content;
+  border-radius: 12px;
+  padding: 10px 20px;
+  margin-bottom: 60px;
+  &__img {
+    height: 50px;
+  }
+}
+
+.mockup {
+  &__container {
+    &_first, &_second {
+      width: 200px;
+      height: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      margin: 0 auto;
+      z-index: 10;
+    }
+    
+    &_first {
+      right: 0;
+      top: 20vh;
+      background-image: url('/ilabu-mockup-1.png');
+    }
+
+    &_second {
+      top: 40vh;
+      right: 20%;
+      background-image: url('/ilabu-mockup-2.png');
+    }
+  } 
+}

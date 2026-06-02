@@ -1,0 +1,85 @@
+.sectionWrapper {
+  width: 1440px;
+  position: relative;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.descrSection {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 60%;
+}
+
+.bgSkewedImg {
+  &__wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    clip-path: polygon(70% 0, 100% 0, 85% 100%, 55% 100%);
+    margin-left: -70px;
+    background: var(--img-src) -80%/cover  no-repeat;
+    height: 100vh;
+    opacity: 0.5;
+    // mask-image: linear-gradient(#00000000, #000000, #00000000);
+  }
+}
+
+.prjAchievements {
+  &__item {
+    margin: 10px 0;
+    border-radius: 12px;
+    padding: 6px 12px 6px 0;
+    background: var(--accent-off-white);
+    box-shadow: 0 0 5px 0px white;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 80px;
+      left: -20px;
+      height: 100%;
+      background: var(--accent-main);
+      display: block;
+      transform: skewX(-10deg);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      left: -20px;
+      height: 100%;
+      background: var(--accent-main);
+      display: block;
+      transform: skewX(10deg);
+    }
+  }
+
+  &__img {
+    width: 30px;
+    position: relative;
+    z-index: 10;
+    margin-left: 15px;
+  }
+
+  &__wrapper {
+    margin-top: 40px;
+    z-index: 10;
+  }
+}
+
+.childrenWrapper {
+  position: relative;
+  width: 200px;
+  height: 100%;
+  flex: 1;
+}

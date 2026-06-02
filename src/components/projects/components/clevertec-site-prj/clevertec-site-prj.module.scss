@@ -1,0 +1,59 @@
+.mockup {
+  &__device {
+    position: absolute;
+    z-index: 10;
+    top: 40vh;
+    right: -31%;
+    width: 700px;
+    height: 303px;
+    overflow: hidden;
+  }
+
+  &__device_phone {
+    position: absolute;
+    z-index: 10;
+    top: 40vh;
+    right: -31%;
+    width: 170px;
+    height: 321px;
+    overflow: hidden;
+    border-radius: 34px 26px 24px 37px;
+  }
+
+  &__imgSite {
+    left: 142px;
+    width: 411px;
+    position: absolute;
+    animation: scroll 20s ease-in-out infinite alternate;
+  }
+
+  &__imgSite_phone {
+    left: 15px;
+    width: 146px;
+    position: absolute;
+    animation: scroll 20s ease-in-out infinite alternate;
+    border-radius: 20px;
+  }
+
+  &__imgDevice {
+    position: absolute;
+    width: 700px;
+    top: -30.9%;
+  }
+
+  &__imgDevice_phone {
+    position: absolute;
+    width: 400px;
+    top: -12.2%;
+    left: -65%;
+  }
+}
+
+@keyframes scroll {
+   0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%); 
+  }
+}

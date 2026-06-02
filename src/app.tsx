@@ -8,7 +8,7 @@ import { Header } from "./components/header";
 import { Main } from "./components/main";
 import { Projects } from "./components/projects";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { Stack } from "~components/stack";
@@ -42,7 +42,7 @@ function App() {
 
       const hrzScrollContext = gsap.context(() => {
         const hrzScrollData = gsap.utils.toArray("#projects > div");
-        gsap.to(hrzScrollData, {
+        const scrollTween = gsap.to(hrzScrollData, {
           xPercent: -100 * (hrzScrollData.length - 1),
           ease: "none",
           scrollTrigger: {
@@ -56,6 +56,21 @@ function App() {
               ease: "power1.inOut",
             },
             end: () => `+=${projectsRef?.current?.offsetWidth}`,
+          },
+        });
+
+        // TODO: animation for each project - move to separate funcs
+        gsap.from(".prj2-phone-1", {
+          y: 30,
+          opacity: 0,
+          stagger: 0.2,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "#prj2",
+            containerAnimation: scrollTween,
+            start: "top center",
+            end: "bottom center",
           },
         });
       }, containerRef);
@@ -100,8 +115,8 @@ function App() {
       <div className={styles.viewport}>
         <div id="content" className={styles.content} ref={containerRef}>
           {/* <Main className={styles.fullSlide} />
-          <About className={styles.fullSlide} /> */}
-          <Stack className={styles.fullSlide} />
+          <About className={styles.fullSlide} />
+          <Stack className={styles.fullSlide} /> */}
           <Projects className={styles.fullSlide} ref={projectsRef} />
           <Future className={styles.fullSlide} />
           <Contacts className={styles.fullSlide} />

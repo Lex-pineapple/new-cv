@@ -1,6 +1,5 @@
 .root {
-  background: purple;
-  width: 500vw;
+  width: 600vw;
   min-height: 100vh;
   display: flex;
   flex-wrap: nowrap;
@@ -10,4 +9,5 @@
   width: 100vw;
   height: 100vh;
   display: flex;
+  justify-content: center;
 }
