@@ -1,4 +1,24 @@
 .root {
   height: 60px;
-  background: orange;
+  background: #f95db2;
+}
+
+.wrapper {
+  width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.link {
+  display: flex;
+  color: white;
+  text-decoration: none;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon {
+  width: 32px;
 }

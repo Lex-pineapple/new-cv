@@ -45,10 +45,10 @@ function App() {
           scrollTrigger: {
             trigger: "#reviews",
             start: "top bottom+=1",
-            endTrigger: "#contacts",
+            endTrigger: "#future",
             end: "bottom bottom",
             snap: {
-              snapTo: 1 / 3,
+              snapTo: 1 / 2,
               duration: { min: 0.25, max: 0.75 },
               delay: 0.125,
               ease: "power1.inOut",
