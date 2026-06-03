@@ -1,9 +1,9 @@
 import type { TWithClassname } from "~types/general";
 
 import styles from "./stack.module.scss";
-import { LinedText } from "~/shared/lined-text";
 import cn from "classnames";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+import { StackItems } from "~components/stack/components/stack-items/stack-items";
 
 const stackInfo = [
   {
@@ -308,171 +308,44 @@ const stackInfo = [
   },
 ];
 
+const middleIdx = Math.floor(stackInfo.length / 2);
+const rightStack = stackInfo.splice(middleIdx + 1);
+const leftStack = stackInfo.splice(0, middleIdx);
+
 export const Stack = ({ className }: TWithClassname) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLSpanElement>(null);
-  const ref1 = useRef(null);
-  const itemRefs = useRef([]);
-  const [paths, setPaths] = useState([]);
-  const [openIdx, setOpenIdx] = useState<string | null>(null);
-
-  const updatePath = () => {
-    if (!containerRef.current || !headerRef.current || !itemRefs.current.length)
-      return;
-
-    const containerRect = containerRef.current?.getBoundingClientRect();
-    const itemsRects = itemRefs.current.map((item) => {
-      return item?.getBoundingClientRect();
-    });
-    const rectA = ref1.current?.getBoundingClientRect();
-    const rectB = headerRef.current.getBoundingClientRect();
-
-    const newPaths = [];
-
-    itemsRects.forEach((item, idx, arr) => {
-      if (idx % 2 === 0 && idx !== arr.length - 1 && item) {
-        const startX = Math.round(item.left - containerRect.left);
-        const startY = Math.round(
-          item.top - containerRect.top + item.height + 6,
-        );
-
-        const endX = Math.round(
-          rectB.left -
-            containerRect.left +
-            rectB.width / 2 -
-            (-(4 * idx) + arr.length * 4),
-        );
-        const endY = Math.round(rectB.top - containerRect.top + rectB.height);
-        const path = `M ${startX} ${startY} C ${endX} ${startY}, ${endX} ${startY}, ${endX} ${endY}`;
-        newPaths[idx] = path;
-      }
-      if (idx === arr.length - 1 && item) {
-        const startX = Math.round(
-          item.left - containerRect.left + item.width / 2,
-        );
-        const startY = Math.round(item.top - containerRect.top);
-        const endX = Math.round(
-          rectB.left - containerRect.left + rectB.width / 2,
-        );
-        const endY = Math.round(rectB.top - containerRect.top + rectB.height);
-        const path = `M ${startX} ${startY} L ${endX} ${endY}`;
-        newPaths[idx] = path;
-      }
-      if (idx % 2 !== 0 && idx !== arr.length - 1 && item) {
-        const startX = Math.round(item.left - containerRect.left + item.width);
-        const startY = Math.round(
-          item.top - containerRect.top + item.height + 6,
-        );
-
-        const endX = Math.round(
-          rectB.left -
-            containerRect.left +
-            rectB.width / 2 -
-            (4 * idx - arr.length * 4),
-        );
-        const endY = Math.round(rectB.top - containerRect.top + rectB.height);
-        const path = `M ${startX} ${startY} C ${endX} ${startY}, ${endX} ${startY}, ${endX} ${endY}`;
-        newPaths[idx] = path;
-      }
-    });
-    setPaths(newPaths);
-  };
-
-  useEffect(() => {
-    updatePath();
-    window.addEventListener("resize", updatePath);
-    return () => window.removeEventListener("resize", updatePath);
-  }, []);
+  const headerRef = useRef<HTMLHeadingElement>(null);
 
   return (
     <section id="stack" className={cn(styles.root, className)}>
       <div className={styles.sectionWrapper} ref={containerRef}>
-        <LinedText
-          ref={headerRef}
-          appear="fade-in"
-          linePosition="center"
-          className={cn("stack-hr", styles.stack_h2)}
-          trigger={{
-            trigger: "#stack",
-            start: "top center",
-            end: "bottom center",
-          }}
-        >
-          Мой стэк
-        </LinedText>
+        <h2 ref={headerRef} className={styles.stack_h2}>
+          Мой стек
+        </h2>
         <div className={styles.stack__wrapper}>
-          {stackInfo.map((item, idx, arr) => {
-            return (
-              <>
-                <svg
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    opacity: 0.5,
-                    width: "100%",
-                    height: "100%",
-                    pointerEvents: "none",
-                  }}
-                >
-                  <path
-                    d={paths[idx]}
-                    fill="none"
-                    stroke={item.color}
-                    strokeWidth="4"
-                  />
-                </svg>
-
-                <div
-                  className={cn(
-                    idx % 2 === 0 ? styles.stack__left : styles.stack__right,
-                    styles.stack__item,
-                  )}
-                  style={{
-                    marginLeft:
-                      idx % 2 === 0 && idx !== arr.length - 1 ? idx * 15 : 0,
-                    marginRight:
-                      idx % 2 !== 0 && idx !== arr.length - 1 ? idx * 15 : 0,
-                  }}
-                >
-                  <p ref={(e) => (itemRefs.current[idx] = e)}>{item.name}</p>
-                  <div
-                    className={styles.stackInner}
-                    style={{
-                      "--local-color": item.color,
-                    }}
-                  >
-                    {item.children.map((childItem, innerIdx) => {
-                      const createdIdx = `${idx}-${innerIdx}`;
-
-                      return (
-                        <div
-                          className={cn(styles.stackInner__wrapper, {
-                            [styles.stackInner__wrapper_open]:
-                              openIdx === createdIdx,
-                          })}
-                        >
-                          <div
-                            className={styles.stackInner__item}
-                            onClick={() => {
-                              setOpenIdx(
-                                openIdx === createdIdx ? null : createdIdx,
-                              );
-                            }}
-                          >
-                            {childItem.name}
-                          </div>
-                          <div className={styles.stackInner__descr}>
-                            {childItem.description}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </>
-            );
-          })}
+          <div className={styles.stack__columns}>
+            <StackItems
+              position="left"
+              headerRef={headerRef}
+              containerRef={containerRef}
+              items={leftStack}
+              className={styles.stack__left}
+            />
+            <StackItems
+              position="right"
+              headerRef={headerRef}
+              containerRef={containerRef}
+              items={rightStack}
+              className={styles.stack__right}
+            />
+          </div>
+          <StackItems
+            position="middle"
+            headerRef={headerRef}
+            containerRef={containerRef}
+            items={stackInfo}
+            className={styles.stack__middle}
+          />
         </div>
       </div>
     </section>
