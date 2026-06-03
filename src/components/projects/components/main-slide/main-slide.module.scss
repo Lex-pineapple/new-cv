@@ -11,6 +11,15 @@
   margin: 40px 0;
 }
 
+.btn {
+  color: black;
+  font-weight: 900;
+  background: var(--accent-main);
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
 .mainContent {
   &__wrapper {
     display: flex;

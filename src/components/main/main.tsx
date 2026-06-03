@@ -33,7 +33,6 @@ export const Main = ({ className }: TWithClassname) => {
           yoyo: true,
           ease: "power1.inOut",
         });
-
         gsap.from("#shape-flower", {
           opacity: 0,
           x: -100,
@@ -48,7 +47,6 @@ export const Main = ({ className }: TWithClassname) => {
           yoyo: true,
           ease: "power1.inOut",
         });
-
         gsap.from("#shape-star", {
           opacity: 0,
           duration: 2,
@@ -62,7 +60,6 @@ export const Main = ({ className }: TWithClassname) => {
           yoyo: true,
           ease: "sine.inOut",
         });
-
         gsap.from("#shape-star-left", {
           opacity: 0,
           duration: 2,
@@ -76,7 +73,6 @@ export const Main = ({ className }: TWithClassname) => {
           yoyo: true,
           ease: "sine.inOut",
         });
-
         gsap.from("#shape-circle", {
           opacity: 0,
           duration: 1,
@@ -90,9 +86,7 @@ export const Main = ({ className }: TWithClassname) => {
           yoyo: true,
           ease: "bounce.out",
         });
-
         const splitLN = SplitText.create("#h1-lastName", { type: "chars" });
-
         gsap.from(splitLN.chars, {
           y: 40,
           color: "#fff",
@@ -101,9 +95,7 @@ export const Main = ({ className }: TWithClassname) => {
           duration: 0.6,
           ease: "sine.out",
         });
-
         const splitFN = SplitText.create("#h1-firstName", { type: "chars" });
-
         gsap.from(splitFN.chars, {
           y: 40,
           color: "#ffa9d8",
@@ -112,14 +104,12 @@ export const Main = ({ className }: TWithClassname) => {
           duration: 0.6,
           ease: "sine.out",
         });
-
         gsap.from("#desc-title", {
           x: 200,
           opacity: 0,
           duration: 1,
           ease: "power2.out",
         });
-
         gsap.from("#desc > p", {
           y: 50,
           opacity: 0,
@@ -127,14 +117,12 @@ export const Main = ({ className }: TWithClassname) => {
           duration: 0.8,
           ease: "power2.out",
         });
-
-        gsap.from("#contacts", {
+        gsap.from("#contacts-main", {
           opacity: 0,
           y: 30,
           duration: 1,
           ease: "power2.out",
         });
-
         gsap.from("#circle-bg", {
           y: 50,
           opacity: 0,
@@ -175,7 +163,7 @@ export const Main = ({ className }: TWithClassname) => {
               деталям и производительности.
             </p>
           </div>
-          <ul id="contacts" className={styles.contacts}>
+          <ul id="contacts-main" className={styles.contacts}>
             <li className={styles.contacts__item}>
               <a href="tel:+375291427361" className={styles.contacts__link}>
                 +375 (29) 142-83-61

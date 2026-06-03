@@ -6,6 +6,7 @@ const LINKS = [
   { name: "Обо мне", href: "#about" },
   { name: "Мой стэк", href: "#stack" },
   { name: "Проекты", href: "#projects" },
+  { name: "Реккомендации", href: "#reviews" },
   { name: "Будущее", href: "#future" },
   { name: "Контакты", href: "#contacts" },
 ];

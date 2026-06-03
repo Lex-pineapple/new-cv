@@ -2,6 +2,7 @@ import { PrjTemplate } from "~components/projects/components/prj-template";
 import type { TWithClassname } from "~types/general";
 import styles from "./clevertec-site-prj.module.scss";
 import { ClevertecLogo } from "~components/projects/components/clevertec-logo";
+import type { TPrjType } from "~components/projects/projects";
 
 const infoData = [
   {
@@ -57,9 +58,16 @@ const stack = [
   },
 ];
 
-export const ClevertecSitePrj = ({ className }: TWithClassname) => {
+export const ClevertecSitePrj = ({
+  className,
+  onBackwardsClick,
+  onForwardClick,
+}: TWithClassname & TPrjType) => {
   return (
     <PrjTemplate
+      id={2}
+      onBackwardsClick={onBackwardsClick}
+      onForwardClick={onForwardClick}
       stack={stack}
       imgSrc="/clevertec-bg.jpg"
       className={className}

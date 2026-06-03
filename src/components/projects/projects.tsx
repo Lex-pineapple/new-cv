@@ -1,7 +1,7 @@
 import cn from "classnames";
 import type { TWithClassname } from "~types/general";
 import styles from "./projects.module.scss";
-import type { RefObject } from "react";
+import { useRef } from "react";
 import { MainSlide } from "~components/projects/components/main-slide";
 import { IlabuPrj } from "~components/projects/components/ilabu-prj";
 import { ClevertecSitePrj } from "~components/projects/components/clevertec-site-prj";
@@ -10,22 +10,88 @@ import { RetroBonusPrj } from "~components/projects/components/retro-bouns-prj";
 import { PlatformPrj } from "~components/projects/components/platform-prj";
 import { FormUiPrj } from "~components/projects/components/form-ui-prj";
 import { LKPPrj } from "~components/projects/components/lkp-prj";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
-type TProjects = {
-  ref: RefObject<HTMLDivElement | null>;
-} & TWithClassname;
+gsap.registerPlugin(useGSAP);
 
-export const Projects = ({ className, ref }: TProjects) => {
+export type TPrjType = {
+  onForwardClick: (id: number) => void;
+  onBackwardsClick: (id: number) => void;
+};
+
+export const Projects = ({ className }: TWithClassname) => {
+  const projectsRef = useRef<HTMLDivElement>(null);
+
+  const { contextSafe } = useGSAP(() => {});
+
+  const onPrjForward = contextSafe((id: number) => {
+    const newId = id + 1;
+    gsap.to("#projects", {
+      xPercent: -12.5 * newId,
+      ease: "none",
+    });
+  });
+  const onPrjBackwards = contextSafe((id: number) => {
+    const newId = id - 1;
+    gsap.to("#projects", {
+      xPercent: -12.5 * newId,
+      ease: "power1.inOut",
+    });
+  });
+  const onShowAllProjects = contextSafe(() => {
+    gsap.to("#projects", {
+      xPercent: -12.5,
+      ease: "power1.inOut",
+    });
+  });
+
   return (
-    <section id="projects" className={cn(styles.root, className)} ref={ref}>
-      <MainSlide className={styles.slide} />
-      <IlabuPrj className={styles.slide} />
-      <ClevertecSitePrj className={styles.slide} />
-      <CleverscopePrj className={styles.slide} />
-      <RetroBonusPrj className={styles.slide} />
-      <PlatformPrj className={styles.slide} />
-      <FormUiPrj className={styles.slide} />
-      <LKPPrj className={styles.slide} />
+    <section
+      id="projects"
+      className={cn(styles.root, className)}
+      ref={projectsRef}
+    >
+      <MainSlide
+        className={styles.slide}
+        setActive={() => onShowAllProjects()}
+      />
+      <IlabuPrj
+        onBackwardsClick={onPrjBackwards}
+        onForwardClick={onPrjForward}
+        className={styles.slide}
+      />
+      <ClevertecSitePrj
+        onBackwardsClick={onPrjBackwards}
+        onForwardClick={onPrjForward}
+        className={styles.slide}
+      />
+      <CleverscopePrj
+        onBackwardsClick={onPrjBackwards}
+        onForwardClick={onPrjForward}
+        className={styles.slide}
+      />
+      <RetroBonusPrj
+        onBackwardsClick={onPrjBackwards}
+        onForwardClick={onPrjForward}
+        className={styles.slide}
+      />
+      <PlatformPrj
+        onBackwardsClick={onPrjBackwards}
+        onForwardClick={onPrjForward}
+        className={styles.slide}
+      />
+      <FormUiPrj
+        onBackwardsClick={onPrjBackwards}
+        onForwardClick={onPrjForward}
+        className={styles.slide}
+      />
+      <LKPPrj
+        onBackwardsClick={onPrjBackwards}
+        onForwardClick={onPrjForward}
+        className={styles.slide}
+      />
+      {/* </div> */}
     </section>
   );
 };

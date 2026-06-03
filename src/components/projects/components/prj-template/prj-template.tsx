@@ -7,6 +7,7 @@ import { PrjDescr } from "~components/projects/components/prj-descr";
 import cn from "classnames";
 
 type TPrjTemplate = {
+  id: number;
   title: string;
   description: string;
   colorMain: string;
@@ -21,9 +22,12 @@ type TPrjTemplate = {
     icon: string;
     name: string;
   }[];
+  onForwardClick: (id: number) => void;
+  onBackwardsClick: (id: number) => void;
 } & TWithClassname;
 
 export const PrjTemplate = ({
+  id,
   children,
   title,
   description,
@@ -34,10 +38,12 @@ export const PrjTemplate = ({
   imgSrc,
   companyLogo,
   stack,
+  onForwardClick,
+  onBackwardsClick,
 }: PropsWithChildren<TPrjTemplate>) => {
   return (
     <div
-      id="prj2"
+      id={`prj${id}`}
       className={cn(className, styles.root)}
       style={
         {
@@ -76,6 +82,20 @@ export const PrjTemplate = ({
           {children}
         </div>
       </div>
+      <button
+        className={styles.btn_backwards}
+        onClick={() => onBackwardsClick(id)}
+      >
+        O
+      </button>
+      {id !== 7 && (
+        <button
+          className={styles.btn_forward}
+          onClick={() => onForwardClick(id)}
+        >
+          T
+        </button>
+      )}
     </div>
   );
 };

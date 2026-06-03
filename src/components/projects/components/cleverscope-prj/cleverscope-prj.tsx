@@ -1,5 +1,6 @@
 import { ClevertecLogo } from "~components/projects/components/clevertec-logo";
 import { PrjTemplate } from "~components/projects/components/prj-template/prj-template";
+import type { TPrjType } from "~components/projects/projects";
 import type { TWithClassname } from "~types/general";
 
 const infoData = [
@@ -52,9 +53,16 @@ const stack = [
   },
 ];
 
-export const CleverscopePrj = ({ className }: TWithClassname) => {
+export const CleverscopePrj = ({
+  className,
+  onBackwardsClick,
+  onForwardClick,
+}: TWithClassname & TPrjType) => {
   return (
     <PrjTemplate
+      id={3}
+      onForwardClick={onForwardClick}
+      onBackwardsClick={onBackwardsClick}
       stack={stack}
       imgSrc="/clevertec-bg.jpg"
       className={className}

@@ -8,48 +8,52 @@ import { useRef } from "react";
 
 gsap.registerPlugin(useGSAP);
 
-export const MainSlide = ({ className }: TWithClassname) => {
+type TMainSlide = {
+  setActive: () => void;
+} & TWithClassname;
+
+export const MainSlide = ({ className, setActive }: TMainSlide) => {
   const firstStatRef = useRef<HTMLSpanElement>(null);
   const secondStatRef = useRef<HTMLSpanElement>(null);
 
-  useGSAP(() => {
-    gsap.from(".projectsMain-text", {
-      y: 30,
-      opacity: 0,
-      stagger: 0.2,
-      duration: 0.8,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: "#projects",
-        start: "top center",
-        end: "bottom center",
-      },
-    });
+  // useGSAP(() => {
+  //   gsap.from(".projectsMain-text", {
+  //     y: 30,
+  //     opacity: 0,
+  //     stagger: 0.2,
+  //     duration: 0.8,
+  //     ease: "power2.out",
+  //     scrollTrigger: {
+  //       trigger: "#projects",
+  //       start: "top center",
+  //       end: "bottom center",
+  //     },
+  //   });
 
-    gsap.from(".statistics-text", {
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: "#projects",
-        start: "top center",
-        end: "bottom center",
-      },
-    });
+  //   gsap.from(".statistics-text", {
+  //     opacity: 0,
+  //     duration: 1,
+  //     ease: "power2.out",
+  //     scrollTrigger: {
+  //       trigger: "#projects",
+  //       start: "top center",
+  //       end: "bottom center",
+  //     },
+  //   });
 
-    gsap.from(".statistics-number", {
-      innerText: 0,
-      duration: 1,
-      snap: {
-        innerText: 1,
-      },
-      scrollTrigger: {
-        trigger: "#projects",
-        start: "top center",
-        end: "bottom center",
-      },
-    });
-  });
+  //   gsap.from(".statistics-number", {
+  //     innerText: 0,
+  //     duration: 1,
+  //     snap: {
+  //       innerText: 1,
+  //     },
+  //     scrollTrigger: {
+  //       trigger: "#projects",
+  //       start: "top center",
+  //       end: "bottom center",
+  //     },
+  //   });
+  // });
 
   return (
     <div id="prj1" className={className}>
@@ -90,6 +94,9 @@ export const MainSlide = ({ className }: TWithClassname) => {
               поддержки OpenWebUI) и развиваться в AI / LLM / data-driven
               продуктах.
             </p>
+            <button className={styles.btn} onClick={() => setActive()}>
+              Посмотреть все проекты
+            </button>
           </div>
           <div className={styles.statistics__wrapper}>
             <p className={styles.statistics__item}>

@@ -1,4 +1,5 @@
 import { PrjTemplate } from "~components/projects/components/prj-template/prj-template";
+import type { TPrjType } from "~components/projects/projects";
 import type { TWithClassname } from "~types/general";
 
 const infoData = [
@@ -51,9 +52,16 @@ const stack = [
   },
 ];
 
-export const FormUiPrj = ({ className }: TWithClassname) => {
+export const FormUiPrj = ({
+  className,
+  onBackwardsClick,
+  onForwardClick,
+}: TWithClassname & TPrjType) => {
   return (
     <PrjTemplate
+      id={6}
+      onBackwardsClick={onBackwardsClick}
+      onForwardClick={onForwardClick}
       stack={stack}
       imgSrc="/alfaleasing-bg.jpg"
       className={className}

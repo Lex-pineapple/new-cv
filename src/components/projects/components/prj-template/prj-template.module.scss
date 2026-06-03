@@ -141,3 +141,26 @@
     }
   }
 }
+
+.btn {
+
+  &_backwards, &_forward {
+    background: var(--accent-main);
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+  }
+  &_backwards {
+    left: 5%;
+    top: 50vh;
+  }
+
+  &_forward {
+    top: 50vh;
+    right: 5%;
+  }
+}

@@ -8,10 +8,11 @@ import { Header } from "./components/header";
 import { Main } from "./components/main";
 import { Projects } from "./components/projects";
 import { useGSAP } from "@gsap/react";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { Stack } from "~components/stack";
+import { Reviews } from "~components/reviews";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
@@ -19,7 +20,6 @@ gsap.registerPlugin(ScrollToPlugin);
 
 function App() {
   const containerRef = useRef(null);
-  const projectsRef = useRef<HTMLDivElement>(null);
 
   const { contextSafe } = useGSAP(
     () => {
@@ -40,50 +40,15 @@ function App() {
         });
       }, containerRef);
 
-      const hrzScrollContext = gsap.context(() => {
-        const hrzScrollData = gsap.utils.toArray("#projects > div");
-        const scrollTween = gsap.to(hrzScrollData, {
-          xPercent: -100 * (hrzScrollData.length - 1),
-          ease: "none",
-          scrollTrigger: {
-            trigger: projectsRef.current,
-            scrub: 1,
-            pin: true,
-            snap: {
-              snapTo: 1 / (hrzScrollData.length - 1),
-              duration: { min: 0.25, max: 0.75 },
-              delay: 0.125,
-              ease: "power1.inOut",
-            },
-            end: () => `+=${projectsRef?.current?.offsetWidth}`,
-          },
-        });
-
-        // TODO: animation for each project - move to separate funcs
-        gsap.from(".prj2-phone-1", {
-          y: 30,
-          opacity: 0,
-          stagger: 0.2,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: "#prj2",
-            containerAnimation: scrollTween,
-            start: "top center",
-            end: "bottom center",
-          },
-        });
-      }, containerRef);
-
       const finalVertContext = gsap.context(() => {
         gsap.timeline({
           scrollTrigger: {
-            trigger: "#future",
+            trigger: "#reviews",
             start: "top bottom+=1",
             endTrigger: "#contacts",
             end: "bottom bottom",
             snap: {
-              snapTo: 1 / 2,
+              snapTo: 1 / 3,
               duration: { min: 0.25, max: 0.75 },
               delay: 0.125,
               ease: "power1.inOut",
@@ -94,7 +59,6 @@ function App() {
 
       return () => {
         initialVertContext.revert();
-        hrzScrollContext.revert();
         finalVertContext.revert();
       };
     },
@@ -114,10 +78,11 @@ function App() {
       <Header onLinkClick={onHeaderLinkClick} />
       <div className={styles.viewport}>
         <div id="content" className={styles.content} ref={containerRef}>
-          {/* <Main className={styles.fullSlide} />
+          <Main className={styles.fullSlide} />
           <About className={styles.fullSlide} />
-          <Stack className={styles.fullSlide} /> */}
-          <Projects className={styles.fullSlide} ref={projectsRef} />
+          <Stack className={styles.fullSlide} />
+          <Projects className={styles.fullSlide} />
+          <Reviews className={styles.fullSlide} />
           <Future className={styles.fullSlide} />
           <Contacts className={styles.fullSlide} />
         </div>
