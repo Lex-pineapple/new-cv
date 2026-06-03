@@ -1,7 +1,6 @@
-import { PrjTemplate } from "~components/projects/components/prj-template";
-import type { TWithClassname } from "~types/general";
-import styles from "./clevertec-site-prj.module.scss";
 import { ClevertecLogo } from "~components/projects/components/clevertec-logo";
+import { PrjTemplate } from "~components/projects/components/prj-template/prj-template";
+import type { TWithClassname } from "~types/general";
 
 const infoData = [
   {
@@ -24,10 +23,6 @@ const infoData = [
     text: "Ускорила сборку интерфейса, внедрив современную компонентную базу Nuxt UI и обеспечив 100% адаптивность под Mobile и Desktop устройства.",
     icon: "/lab-svg-2.svg",
   },
-
-  // "Спроектировала и внедрила 5 сложных интерактивных форм ввода данных со сквозной валидацией, а также динамический каталог медицинских анализов.",
-  // "Интегрировала платежный шлюз, обеспечив безопасный и бесшовный процесс онлайн-оплаты внутри приложения.",
-  // "Расширила функционал приложения, заинтегрировав сторонний виджет карт и модуль сканирования/распознавания QR-кодов.",
 ];
 
 const stack = [
@@ -57,13 +52,13 @@ const stack = [
   },
 ];
 
-export const ClevertecSitePrj = ({ className }: TWithClassname) => {
+export const CleverscopePrj = ({ className }: TWithClassname) => {
   return (
     <PrjTemplate
       stack={stack}
       imgSrc="/clevertec-bg.jpg"
       className={className}
-      title={"Клевер Технолоджи"}
+      title={"CleverScope"}
       description={
         "В своём стремлении повысить качество жизни, они забывают, что современная методология разработки предопределяет высокую востребованность своевременного выполнения сверхзадачи. Ясность нашей позиции очевидна: социально-экономическое развитие не оставляет шанса для экспериментов, поражающих по своей масштабности и грандиозности."
       }
@@ -71,23 +66,6 @@ export const ClevertecSitePrj = ({ className }: TWithClassname) => {
       colorSecondary={"#fffcfc"}
       companyLogo={<ClevertecLogo />}
       data={infoData}
-    >
-      <div className={styles.mockup}>
-        <div className={styles.mockup__device}>
-          <img className={styles.mockup__imgSite} src="/clevertec-site.png" />
-          <img className={styles.mockup__imgDevice} src="/laptop-mockup.svg" />
-        </div>
-        <div className={styles.mockup__device_phone}>
-          <img
-            className={styles.mockup__imgSite_phone}
-            src="/clevertec-site.png"
-          />
-          <img
-            className={styles.mockup__imgDevice_phone}
-            src="/phone-mockup.svg"
-          />
-        </div>
-      </div>
-    </PrjTemplate>
+    />
   );
 };

@@ -1,13 +1,10 @@
 .root {
   color: var(--accent-main);
-
-  &::after {
-    content: '';
-    display: block;
-    height: 2px;
-    width: 100%;
-    position: relative;
-    top: 20px;
-    background: var(--accent-main);
-  }
+  background: #ffffff2e;
+  border-radius: 10px;
+      /* opacity: 0.1; */
+  color: var(--accent-off-white);
+  padding: 10px;
+  backdrop-filter: blur(38px);
+  box-shadow: 0 0 2px 0px var(--accent-main);
 }

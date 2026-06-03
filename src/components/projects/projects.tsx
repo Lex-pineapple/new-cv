@@ -5,6 +5,11 @@ import type { RefObject } from "react";
 import { MainSlide } from "~components/projects/components/main-slide";
 import { IlabuPrj } from "~components/projects/components/ilabu-prj";
 import { ClevertecSitePrj } from "~components/projects/components/clevertec-site-prj";
+import { CleverscopePrj } from "~components/projects/components/cleverscope-prj";
+import { RetroBonusPrj } from "~components/projects/components/retro-bouns-prj";
+import { PlatformPrj } from "~components/projects/components/platform-prj";
+import { FormUiPrj } from "~components/projects/components/form-ui-prj";
+import { LKPPrj } from "~components/projects/components/lkp-prj";
 
 type TProjects = {
   ref: RefObject<HTMLDivElement | null>;
@@ -16,9 +21,11 @@ export const Projects = ({ className, ref }: TProjects) => {
       <MainSlide className={styles.slide} />
       <IlabuPrj className={styles.slide} />
       <ClevertecSitePrj className={styles.slide} />
-      <div className={styles.slide}>3</div>
-      <div className={styles.slide}>4</div>
-      <div className={styles.slide}>5</div>
+      <CleverscopePrj className={styles.slide} />
+      <RetroBonusPrj className={styles.slide} />
+      <PlatformPrj className={styles.slide} />
+      <FormUiPrj className={styles.slide} />
+      <LKPPrj className={styles.slide} />
     </section>
   );
 };

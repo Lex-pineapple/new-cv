@@ -30,9 +30,49 @@ const infoData = [
   // "Расширила функционал приложения, заинтегрировав сторонний виджет карт и модуль сканирования/распознавания QR-кодов.",
 ];
 
+const stack = [
+  {
+    icon: "",
+    name: "TypeScript",
+  },
+  {
+    icon: "",
+    name: "React",
+  },
+  {
+    icon: "",
+    name: "Node.js",
+  },
+  {
+    icon: "",
+    name: "Node.js",
+  },
+  {
+    icon: "",
+    name: "Node.js",
+  },
+  {
+    icon: "",
+    name: "Node.js",
+  },
+  {
+    icon: "",
+    name: "Node.js",
+  },
+  {
+    icon: "",
+    name: "Node.js",
+  },
+  {
+    icon: "",
+    name: "Node.js",
+  },
+];
+
 export const IlabuPrj = ({ className }: TWithClassname) => {
   return (
     <PrjTemplate
+      stack={stack}
       imgSrc="/ilabu-bg.png"
       companyLogo={
         <div className={styles.companyLogo}>

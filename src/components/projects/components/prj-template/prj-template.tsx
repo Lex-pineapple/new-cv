@@ -4,6 +4,7 @@ import styles from "./prj-template.module.scss";
 import type { TWithClassname } from "~types/general";
 import { PrjHeader } from "~components/projects/components/prj-header";
 import { PrjDescr } from "~components/projects/components/prj-descr";
+import cn from "classnames";
 
 type TPrjTemplate = {
   title: string;
@@ -16,6 +17,10 @@ type TPrjTemplate = {
     icon: string;
   }[];
   imgSrc: string;
+  stack: {
+    icon: string;
+    name: string;
+  }[];
 } & TWithClassname;
 
 export const PrjTemplate = ({
@@ -28,11 +33,12 @@ export const PrjTemplate = ({
   className,
   imgSrc,
   companyLogo,
+  stack,
 }: PropsWithChildren<TPrjTemplate>) => {
   return (
     <div
       id="prj2"
-      className={className}
+      className={cn(className, styles.root)}
       style={
         {
           "--accent-main": colorMain,
@@ -60,10 +66,16 @@ export const PrjTemplate = ({
             ))}
           </div>
         </div>
-        <div className={styles.childrenWrapper}>{children}</div>
+        <div className={styles.childrenWrapper}>
+          <p className={styles.stack__h}>Стек проекта</p>
+          <div className={styles.stack}>
+            {stack.map((item) => {
+              return <div className={styles.stack__item}>{item.name}</div>;
+            })}
+          </div>
+          {children}
+        </div>
       </div>
-
-      <div className={styles.bgSkewedImg__wrapper}></div>
     </div>
   );
 };
