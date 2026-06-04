@@ -19,3 +19,9 @@
   height: 100vh;
   display: flex;
 }
+
+@media screen and (width <= 900px) {
+  .fullSlide {
+    height: 100%;
+  }
+}

@@ -7,12 +7,14 @@ import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import TextPlugin from "gsap/TextPlugin";
 import { LinedText } from "~/shared/lined-text";
+import { useMediaQuery } from "usehooks-ts";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(TextPlugin);
 
 export const Main = ({ className }: TWithClassname) => {
+  const isMobile = useMediaQuery("(width < 900px)");
   const ref = useRef(null);
   useGSAP(
     () => {
@@ -146,7 +148,14 @@ export const Main = ({ className }: TWithClassname) => {
         </h1>
         <div className={styles.box}>
           <div id="circle-bg" className={styles.circleBg}>
-            <img src="main-pic-placeholder.png" className={styles.mainImg} />
+            <img
+              src={
+                isMobile
+                  ? "main-pic-placeholder-square.png"
+                  : "main-pic-placeholder.png"
+              }
+              className={styles.mainImg}
+            />
           </div>
         </div>
         <div className={styles.desc__wrapper}>
@@ -155,10 +164,10 @@ export const Main = ({ className }: TWithClassname) => {
             Оживляю макеты с помощью чистого кода и передовых технологий
           </p>
           <div id="desc" className={styles.desc__main}>
-            <p>
+            <p className={styles.desc__text}>
               Специализируюсь на создании динамических веб-приложений (SPA).
             </p>
-            <p>
+            <p className={styles.desc__text}>
               Проектирую поддерживаемую архитектуру интерфейса, уделяя внимание
               деталям и производительности.
             </p>
