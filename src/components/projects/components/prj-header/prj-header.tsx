@@ -8,5 +8,7 @@ export const PrjHeader = ({
   children,
   className,
 }: PropsWithChildren<TWithClassname>) => {
-  return <h2 className={cn(className, styles.root)}>{children}</h2>;
+  return (
+    <h2 className={cn(className, styles.root, "prj-header")}>{children}</h2>
+  );
 };

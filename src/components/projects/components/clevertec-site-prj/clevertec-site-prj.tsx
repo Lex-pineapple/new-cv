@@ -33,7 +33,7 @@ const infoData = [
 
 const stack = [
   {
-    icon: "",
+    icon: "/icons/ts-icon.svg",
     name: "TypeScript",
   },
   {

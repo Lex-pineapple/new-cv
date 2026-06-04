@@ -29,7 +29,7 @@ export const Projects = ({ className }: TWithClassname) => {
     const newId = id + 1;
     gsap.to("#projects", {
       xPercent: -12.5 * newId,
-      ease: "none",
+      ease: "power1.inOut",
     });
   });
   const onPrjBackwards = contextSafe((id: number) => {
@@ -40,9 +40,35 @@ export const Projects = ({ className }: TWithClassname) => {
     });
   });
   const onShowAllProjects = contextSafe(() => {
-    gsap.to("#projects", {
+    const showAllTween = gsap.to("#projects", {
       xPercent: -12.5,
       ease: "power1.inOut",
+    });
+
+    gsap.from(".prj2-phone-1", {
+      y: 100,
+      duration: 0.5,
+      opacity: 0,
+      delay: 0.2,
+      scrollTrigger: {
+        containerAnimation: showAllTween,
+        trigger: "#prj1",
+        start: "top bottom",
+        end: "bottom center",
+      },
+    });
+
+    gsap.from(".prj-header", {
+      x: 100,
+      duration: 0.5,
+      opacity: 0,
+      delay: 0.2,
+      scrollTrigger: {
+        containerAnimation: showAllTween,
+        trigger: "#prj1",
+        start: "top bottom",
+        end: "bottom center",
+      },
     });
   });
 

@@ -60,7 +60,9 @@ export const PrjTemplate = ({
           <PrjDescr>{description}</PrjDescr>
           <div className={styles.prjAchievements__wrapper}>
             {data.map((item) => (
-              <div className={styles.prjAchievements__item}>
+              <div
+                className={cn(styles.prjAchievements__item, "prj-achievement")}
+              >
                 <div>
                   <img
                     className={styles.prjAchievements__img}
@@ -76,7 +78,12 @@ export const PrjTemplate = ({
           <p className={styles.stack__h}>Стек проекта</p>
           <div className={styles.stack}>
             {stack.map((item) => {
-              return <div className={styles.stack__item}>{item.name}</div>;
+              return (
+                <div className={styles.stack__item}>
+                  <img className={styles.stack__item_icon} src={item.icon} />
+                  <p className={styles.stack__item_text}>{item.name}</p>
+                </div>
+              );
             })}
           </div>
           {children}
@@ -86,14 +93,14 @@ export const PrjTemplate = ({
         className={styles.btn_backwards}
         onClick={() => onBackwardsClick(id)}
       >
-        O
+        <img src="/arrow-icon.svg" />
       </button>
       {id !== 7 && (
         <button
           className={styles.btn_forward}
           onClick={() => onForwardClick(id)}
         >
-          T
+          <img src="/arrow-icon.svg" />
         </button>
       )}
     </div>
