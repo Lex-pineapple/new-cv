@@ -91,7 +91,6 @@ export const Projects = ({ className }: TWithClassname) => {
         onForwardClick={onPrjForward}
         className={styles.slide}
       />
-      {/* </div> */}
     </section>
   );
 };

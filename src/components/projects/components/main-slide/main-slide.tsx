@@ -16,44 +16,56 @@ export const MainSlide = ({ className, setActive }: TMainSlide) => {
   const firstStatRef = useRef<HTMLSpanElement>(null);
   const secondStatRef = useRef<HTMLSpanElement>(null);
 
-  // useGSAP(() => {
-  //   gsap.from(".projectsMain-text", {
-  //     y: 30,
-  //     opacity: 0,
-  //     stagger: 0.2,
-  //     duration: 0.8,
-  //     ease: "power2.out",
-  //     scrollTrigger: {
-  //       trigger: "#projects",
-  //       start: "top center",
-  //       end: "bottom center",
-  //     },
-  //   });
+  useGSAP(() => {
+    gsap.from(".projectsMain-text", {
+      y: 30,
+      opacity: 0,
+      stagger: 0.2,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#projects",
+        start: "top center",
+        end: "bottom center",
+      },
+    });
 
-  //   gsap.from(".statistics-text", {
-  //     opacity: 0,
-  //     duration: 1,
-  //     ease: "power2.out",
-  //     scrollTrigger: {
-  //       trigger: "#projects",
-  //       start: "top center",
-  //       end: "bottom center",
-  //     },
-  //   });
+    gsap.from(".statistics-text", {
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#projects",
+        start: "top center",
+        end: "bottom center",
+      },
+    });
 
-  //   gsap.from(".statistics-number", {
-  //     innerText: 0,
-  //     duration: 1,
-  //     snap: {
-  //       innerText: 1,
-  //     },
-  //     scrollTrigger: {
-  //       trigger: "#projects",
-  //       start: "top center",
-  //       end: "bottom center",
-  //     },
-  //   });
-  // });
+    gsap.from(".statistics-number", {
+      innerText: 0,
+      duration: 1,
+      snap: {
+        innerText: 1,
+      },
+      scrollTrigger: {
+        trigger: "#projects",
+        start: "top center",
+        end: "bottom center",
+      },
+    });
+
+    gsap.from("#more-projects-btn", {
+      opacity: 0,
+      y: 20,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#projects",
+        start: "top center",
+        end: "bottom center",
+      },
+    });
+  });
 
   return (
     <div id="prj1" className={className}>
@@ -94,7 +106,11 @@ export const MainSlide = ({ className, setActive }: TMainSlide) => {
               поддержки OpenWebUI) и развиваться в AI / LLM / data-driven
               продуктах.
             </p>
-            <button className={styles.btn} onClick={() => setActive()}>
+            <button
+              id="more-projects-btn"
+              className={styles.btn}
+              onClick={() => setActive()}
+            >
               Посмотреть все проекты
             </button>
           </div>

@@ -2,6 +2,10 @@ import type { TWithClassname } from "~types/general";
 import cn from "classnames";
 import styles from "./contacts.module.scss";
 import { ContactItem } from "~components/contacts/components/contact-item";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 
 const contactData = [
   {
@@ -27,6 +31,21 @@ const contactData = [
 ];
 
 export const Contacts = ({ className }: TWithClassname) => {
+  useGSAP(() => {
+    gsap.from(".contact-item", {
+      y: 30,
+      opacity: 0,
+      stagger: 0.2,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#contacts",
+        start: "top bottom",
+        end: "bottom center",
+      },
+    });
+  });
+
   return (
     <section id="contacts" className={cn(styles.root, className)}>
       <div className={styles.sectionWrapper}>

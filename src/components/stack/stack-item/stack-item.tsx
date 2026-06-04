@@ -1,7 +1,11 @@
 import type { TCoords } from "~components/stack/components/stack-items/stack-items";
 import styles from "./stack-item.module.scss";
-import type { CSSProperties, RefObject } from "react";
+import { type CSSProperties, type RefObject } from "react";
 import cn from "classnames";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 
 type TStackItem = {
   path: string;
@@ -10,6 +14,7 @@ type TStackItem = {
   itemChildren: {
     name: string;
     description: string;
+    icon?: string;
   }[];
   ref: RefObject<HTMLParagraphElement>;
   coords?: TCoords;
@@ -27,6 +32,8 @@ export const StackItem = ({
   dir,
   padding,
 }: TStackItem) => {
+  useGSAP(() => {});
+
   return (
     <div
       className={cn(styles.root, styles[`root_${dir}`])}
@@ -46,7 +53,13 @@ export const StackItem = ({
           pointerEvents: "none",
         }}
       >
-        <path d={path} fill="none" stroke={color} strokeWidth="4" />
+        <path
+          d={path}
+          fill="none"
+          stroke={color}
+          strokeWidth="4"
+          className="pathClassName"
+        />
         <circle
           cx={coords?.x}
           cy={coords?.y}
@@ -56,8 +69,8 @@ export const StackItem = ({
           strokeWidth="4"
         />
       </svg>
-      <div>
-        <p className={styles.title} ref={ref}>
+      <div className={styles.wrapper}>
+        <p className={cn(styles.title, `stack-item-title-${dir}`)} ref={ref}>
           {name}
         </p>
         <div
@@ -70,7 +83,8 @@ export const StackItem = ({
         >
           {itemChildren.map((item) => {
             return (
-              <div>
+              <div className={cn("inner-item", styles.inner)}>
+                <img className={styles.inner__img} src={item.icon} />
                 <div className={styles.inner__text}>{item.name}</div>
               </div>
             );

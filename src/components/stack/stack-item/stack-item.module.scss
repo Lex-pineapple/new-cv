@@ -1,48 +1,115 @@
 .root {
   width: fit-content;
+  
+  &_left {
+    .wrapper {
+      align-items: start;
+    }
 
+    .inner {
+      &::before {
+        background-color: #fffbf5;
+      }
+    }
+  }
+  &_middle {
+    .inner {
+      &::before {
+        background-color: #f3fffe;
+
+      }
+    }
+  }
   &_right {
+    .wrapper {
+      align-items: end;
+    }
     .title {
       text-align: end;
     }
+
+    .inner__wrapper {
+      justify-content: end;
+    }
+
+    .inner {
+      &::before {
+        background-color: #f5fffe;
+      }
+    }
   }
+  &_middle {
+    .wrapper {
+      align-items: center;
+    }
+    .title {
+      text-align: center;
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
   font-weight: 900;
   margin: 6px;
   padding: 10px 10px 0;
+  max-width: 200px;
 }
 
 .inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 2px solid var(--local-color);
+  background: var(--local-color);
+  color: black;
+  position: relative;
+  z-index: 11;
+  border-radius: 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in;
+  border: 1px solid #ffffff61;
+  overflow: hidden;
+  
+  &:hover {
+    box-shadow: 
+    0 0 5px #fff,               
+    0 0 10px var(--local-color),           
+    0 0 20px var(--local-color),            
+    0 0 40px var(--local-color),           
+    inset 0 0 10px var(--local-color);  
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 32px;
+    height: 100%;
+
+  }
+
+  &__img {
+    width: 16px;
+    z-index: 10;
+  }
+
   &__wrapper {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin: 20px 0;
+    margin: 10px 0;
     padding: 0 10px;
-    max-width: 500px;
+    max-width: 600px;
   }
 
   &__text {
-    border: 2px solid var(--local-color);
-    background: var(--local-color);
-    color: black;
-    position: relative;
-    z-index: 11;
-    border-radius: 8px;
-    padding: 4px 8px;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease-in;
-    border: 1px solid #ffffff61;
-    
-    &:hover {
-      box-shadow: 
-      0 0 5px #fff,               
-      0 0 10px var(--local-color),           
-      0 0 20px var(--local-color),            
-      0 0 40px var(--local-color),           
-      inset 0 0 10px var(--local-color);  
-    }
+    font-weight: 600;
   }
 }
