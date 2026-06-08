@@ -2,13 +2,11 @@
   position: fixed;
   width: 100%;
   top: 0;
-  background: linear-gradient(
-    to bottom,
-    #322b2e,
-    rgba(#eb8fa9, 0)
-  );
+  background: linear-gradient(to bottom,
+      #322b2e,
+      rgba(#eb8fa9, 0));
   height: 100px;
-  z-index: 10;
+  z-index: 9999999;
 }
 
 .contentWraper {
@@ -21,14 +19,15 @@
 
 .logoWrapper {
   background: #1d1d1d;
-  width: 40px;
-  height: 40px;
+  width: 3em;
+  height: 3em;
   border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 150px;
   transition: background .3s ease-out;
+  z-index: 10;
 
   & img {
     filter: invert(68%) sepia(94%) saturate(3086%) hue-rotate(318deg) brightness(101%) contrast(98%);
@@ -50,4 +49,36 @@
   margin: 0;
   padding: 0;
   gap: 20px;
+}
+
+@media screen and (width < 1050px) {
+  .contentWraper {
+    justify-content: space-between;
+  }
+
+  .linksNav {
+    &__wrapper {
+      position: fixed;
+      width: 100vw;
+      height: 50vh;
+      top: 0;
+      left: 0;
+      background: var(--bg-main);
+      transform: translateY(-100vh);
+      transition: transform .4s ease;
+
+      &_open {
+        transform: translateY(0);
+        box-shadow: 0 0 6px 0 rgb(47, 47, 47);
+      }
+    }
+
+    .linksWrapper {
+      // width: 100%;
+      padding-top: 100px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }

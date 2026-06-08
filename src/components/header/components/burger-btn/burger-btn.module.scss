@@ -1,0 +1,54 @@
+.btn {
+  &__root {
+    width: 3em;
+    height: 3em;
+    background-color: var(--accent-main);
+    border-radius: 0.5em;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+
+    &_active {
+      background-color: #fff;
+
+      &>.btn__line_center {
+        transform: translateX(-3em);
+      }
+
+      &>.btn__line_top {
+        transform: translateY(0) rotate(45deg);
+      }
+
+      &>.btn__line_bottom {
+        transform: translateY(0) rotate(-45deg);
+      }
+
+      &>.btn__line {
+        background-color: var(--accent-main);
+      }
+    }
+  }
+
+  &__line {
+    width: 1.5em;
+    height: 0.2em;
+    background-color: #fff;
+    border-radius: 0.2em;
+    position: absolute;
+    transition: transform .4s ease;
+
+    &_top {
+      transform: translateY(-0.7em);
+      width: 2em;
+    }
+
+    &_bottom {
+      transform: translateY(0.7em);
+      width: 2em;
+    }
+  }
+}
