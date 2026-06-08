@@ -1,6 +1,6 @@
 .root {
   width: fit-content;
-  
+
   &_left {
     .wrapper {
       align-items: start;
@@ -12,6 +12,7 @@
       }
     }
   }
+
   &_middle {
     .inner {
       &::before {
@@ -20,10 +21,12 @@
       }
     }
   }
+
   &_right {
     .wrapper {
       align-items: end;
     }
+
     .title {
       text-align: end;
     }
@@ -38,10 +41,12 @@
       }
     }
   }
+
   &_middle {
     .wrapper {
       align-items: center;
     }
+
     .title {
       text-align: center;
     }
@@ -75,14 +80,14 @@
   transition: box-shadow 0.3s ease-in;
   border: 1px solid #ffffff61;
   overflow: hidden;
-  
+
   &:hover {
-    box-shadow: 
-    0 0 5px #fff,               
-    0 0 10px var(--local-color),           
-    0 0 20px var(--local-color),            
-    0 0 40px var(--local-color),           
-    inset 0 0 10px var(--local-color);  
+    box-shadow:
+      0 0 5px #fff,
+      0 0 10px var(--local-color),
+      0 0 20px var(--local-color),
+      0 0 40px var(--local-color),
+      inset 0 0 10px var(--local-color);
   }
 
   &::before {
@@ -111,5 +116,33 @@
 
   &__text {
     font-weight: 600;
+  }
+}
+
+@media screen and (width <=600px) {
+  .root {
+    &_right {
+      .title {
+        text-align: start;
+      }
+
+      .wrapper {
+        align-items: start;
+      }
+
+      .inner__wrapper {
+        justify-content: start;
+      }
+    }
+
+    &_middle {
+      .title {
+        text-align: start;
+      }
+
+      .wrapper {
+        align-items: start;
+      }
+    }
   }
 }

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type RefObject } from "react";
+import { useMediaQuery } from "usehooks-ts";
 import { StackItem } from "~components/stack/stack-item";
 
 export type TCoords = {
@@ -32,6 +33,8 @@ export const StackItems = ({
   const itemRefs = useRef<HTMLParagraphElement[]>([]);
   const [paths, setPaths] = useState<string[]>([]);
   const [circleCoords, setCircleCoords] = useState<TCoords[]>([]);
+  const isTablet = useMediaQuery("(width < 1200px)");
+  const isMobile = useMediaQuery("(width <= 600px)");
 
   const updatePath = () => {
     if (!containerRef.current || !headerRef.current || !itemRefs.current.length)
@@ -46,7 +49,7 @@ export const StackItems = ({
     const newPaths: string[] = [];
     const newCircleCoords: TCoords[] = [];
 
-    itemsRects.forEach((item, idx, arr) => {
+    itemsRects.forEach((item, idx) => {
       if (item) {
         if (position === "left") {
           const startX = Math.round(item.left - containerRect.left);
@@ -55,10 +58,7 @@ export const StackItems = ({
           );
 
           const endX = Math.round(
-            rectB.left -
-              containerRect.left +
-              rectB.width / 2 -
-              (-(4 * idx) + arr.length * 4),
+            rectB.left - containerRect.left + rectB.width / 2,
           );
           const endY = Math.round(rectB.top - containerRect.top + rectB.height);
           const path = `M ${startX} ${startY} C ${endX} ${startY}, ${endX} ${startY}, ${endX} ${endY}`;
@@ -77,10 +77,7 @@ export const StackItems = ({
           );
 
           const endX = Math.round(
-            rectB.left -
-              containerRect.left +
-              rectB.width / 2 -
-              (4 * idx - arr.length * 4),
+            rectB.left - containerRect.left + rectB.width / 2,
           );
           const endY = Math.round(rectB.top - containerRect.top + rectB.height);
           const path = `M ${startX} ${startY} C ${endX} ${startY}, ${endX} ${startY}, ${endX} ${endY}`;
@@ -112,11 +109,47 @@ export const StackItems = ({
     setCircleCoords(newCircleCoords);
   };
 
+  const updatePathMobile = () => {
+    if (!containerRef.current || !headerRef.current || !itemRefs.current.length)
+      return;
+
+    const containerRect = containerRef.current?.getBoundingClientRect();
+    const itemsRects = itemRefs.current.map((item) => {
+      return item?.getBoundingClientRect();
+    });
+    const rectB = headerRef.current.getBoundingClientRect();
+
+    const newPaths: string[] = [];
+    const newCircleCoords: TCoords[] = [];
+    itemsRects.forEach((item, idx) => {
+      if (item) {
+        const endX = Math.round(item.right);
+        const endY = Math.round(item.top - containerRect.top + item.height + 6);
+
+        const startX = 10;
+        const startY = Math.round(rectB.top - containerRect.top + rectB.height);
+        const path = `M ${startX} ${startY} L ${startX} ${endY - 20} A 20 20 0 0 0 ${startX + 20} ${endY} L ${endX} ${endY}`;
+        newCircleCoords[idx] = {
+          x: endX,
+          y: endY,
+        };
+        newPaths[idx] = path;
+      }
+    });
+    setPaths(newPaths);
+    setCircleCoords(newCircleCoords);
+  };
+
   useEffect(() => {
-    updatePath();
-    window.addEventListener("resize", updatePath);
-    return () => window.removeEventListener("resize", updatePath);
-  }, []);
+    if (isMobile) updatePathMobile();
+    else updatePath();
+    window.addEventListener("resize", isMobile ? updatePathMobile : updatePath);
+    return () =>
+      window.removeEventListener(
+        "resize",
+        isMobile ? updatePathMobile : updatePath,
+      );
+  }, [isMobile]);
 
   return (
     <div className={className}>
@@ -130,7 +163,7 @@ export const StackItems = ({
             ref={(e) => (itemRefs.current[idx] = e)}
             coords={circleCoords[idx]}
             dir={position}
-            padding={`${Math.exp(4) * idx}px`}
+            padding={isTablet ? "0" : `${Math.exp(4) * idx}px`}
           />
         );
       })}
