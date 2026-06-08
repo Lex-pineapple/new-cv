@@ -74,11 +74,16 @@
     }
 
     .linksWrapper {
-      // width: 100%;
       padding-top: 100px;
       flex-direction: column;
       align-items: center;
       justify-content: center;
     }
+  }
+}
+
+@media screen and (width < 600px) {
+  .linksNav__wrapper {
+    height: 100vh;
   }
 }

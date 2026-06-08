@@ -23,43 +23,46 @@ function App() {
 
   const { contextSafe } = useGSAP(
     () => {
-      const initialVertContext = gsap.context(() => {
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: "#main",
-            start: "top top",
-            endTrigger: "#projects",
-            end: "bottom bottom",
-            snap: {
-              snapTo: 1 / 3,
-              duration: { min: 0.25, max: 0.75 },
-              delay: 0.125,
-              ease: "power1.inOut",
+      const mm = gsap.matchMedia();
+      mm.add("(width > 1280px)", () => {
+        const initialVertContext = gsap.context(() => {
+          gsap.timeline({
+            scrollTrigger: {
+              trigger: "#main",
+              start: "top top",
+              endTrigger: "#projects",
+              end: "bottom bottom",
+              snap: {
+                snapTo: 1 / 3,
+                duration: { min: 0.25, max: 0.75 },
+                delay: 0.125,
+                ease: "power1.inOut",
+              },
             },
-          },
-        });
-      }, containerRef);
+          });
+        }, containerRef);
 
-      const finalVertContext = gsap.context(() => {
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: "#reviews",
-            start: "top bottom+=1",
-            endTrigger: "#future",
-            end: "bottom bottom",
-            snap: {
-              snapTo: 1 / 2,
-              duration: { min: 0.25, max: 0.75 },
-              delay: 0.125,
-              ease: "power1.inOut",
+        const finalVertContext = gsap.context(() => {
+          gsap.timeline({
+            scrollTrigger: {
+              trigger: "#reviews",
+              start: "top bottom+=1",
+              endTrigger: "#future",
+              end: "bottom bottom",
+              snap: {
+                snapTo: 1 / 2,
+                duration: { min: 0.25, max: 0.75 },
+                delay: 0.125,
+                ease: "power1.inOut",
+              },
             },
-          },
-        });
-      }, containerRef);
+          });
+        }, containerRef);
+      });
 
       return () => {
-        initialVertContext.revert();
-        finalVertContext.revert();
+        // initialVertContext.revert();
+        // finalVertContext.revert();
       };
     },
     { scope: containerRef },
@@ -79,8 +82,8 @@ function App() {
       <div className={styles.viewport}>
         <div id="content" className={styles.content} ref={containerRef}>
           <Main className={styles.fullSlide} />
-          {/* <About className={styles.fullSlide} />
-          <Stack className={styles.fullSlide} />
+          <About className={styles.fullSlide} />
+          {/* <Stack className={styles.fullSlide} />
           <Projects className={styles.fullSlide} />
           <Reviews className={styles.fullSlide} />
           <Future className={styles.fullSlide} />
