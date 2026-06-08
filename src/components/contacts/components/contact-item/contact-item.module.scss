@@ -8,11 +8,11 @@
   border-radius: 10px;
   padding: 20px;
   width: 50%;
-    background: rgb(91 91 91 / 8%);
-    border: 1px solid rgb(84 84 84 / 25%);
-    backdrop-filter: blur(16px) url(#liquid-glass-refraction);
-    -webkit-backdrop-filter: blur(16px) url(#liquid-glass-refraction);
-    box-shadow: inset 0 1px 1px rgb(98 98 98 / 40%), inset 0 10px 20px rgb(76 76 76 / 15%), 0 8px 32px rgba(0, 0, 0, 0.2);
+  background: rgb(91 91 91 / 8%);
+  border: 1px solid rgb(84 84 84 / 25%);
+  backdrop-filter: blur(16px) url(#liquid-glass-refraction);
+  -webkit-backdrop-filter: blur(16px) url(#liquid-glass-refraction);
+  box-shadow: inset 0 1px 1px rgb(98 98 98 / 40%), inset 0 10px 20px rgb(76 76 76 / 15%), 0 8px 32px rgba(0, 0, 0, 0.2);
 
   & .img__wrapper {
     border-radius: 10px;
@@ -30,6 +30,11 @@
 
   & img {
     width: 26px;
+  }
+}
 
+@media screen and (width <=1000px) {
+  .root {
+    width: auto;
   }
 }

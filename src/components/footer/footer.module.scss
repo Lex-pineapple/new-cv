@@ -22,3 +22,10 @@
 .icon {
   width: 32px;
 }
+
+@media screen and (width <=1440px) {
+  .wrapper {
+    width: auto;
+    padding: 0 20px;
+  }
+}

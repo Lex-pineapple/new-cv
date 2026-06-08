@@ -85,12 +85,12 @@ function App() {
           <About className={styles.fullSlide} /> */}
           {/* <Stack className={styles.fullSlide} /> */}
           {/* <Projects className={styles.fullSlide} /> */}
-          <Reviews className={styles.fullSlide} />
-          {/* <Future className={styles.fullSlide} /> */}
-          {/* <Contacts className={styles.fullSlide} /> */}
+          {/* <Reviews className={styles.fullSlide} /> */}
+          <Future className={styles.fullSlide} />
+          <Contacts className={styles.fullSlide} />
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
