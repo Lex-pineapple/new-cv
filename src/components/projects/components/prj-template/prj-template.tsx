@@ -86,7 +86,7 @@ export const PrjTemplate = ({
               );
             })}
           </div>
-          {children}
+          <div className={styles.childrenContentWrapper}>{children}</div>
         </div>
       </div>
       <button

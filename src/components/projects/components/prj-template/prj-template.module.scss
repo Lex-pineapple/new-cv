@@ -1,38 +1,34 @@
 .root {
-    // clip-path: polygon(70% 0, 100% 0, 85% 100%, 55% 100%);
-    // margin-left: -70px;
-    
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -5%;
-      width: calc(100vw + 10%);
-      height: 100vh;
-      background: var(--img-src) center/cover  no-repeat;
-      height: 100vh;
-      opacity: 0.5;
-      mask-image: linear-gradient(
-        to left,
+  // clip-path: polygon(70% 0, 100% 0, 85% 100%, 55% 100%);
+  // margin-left: -70px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -5%;
+    width: calc(100vw + 10%);
+    height: 100vh;
+    background: var(--img-src) center/cover no-repeat;
+    height: 100vh;
+    opacity: 0.5;
+    mask-image: linear-gradient(to left,
         rgba(0, 0, 0, 0) 0%,
         rgba(0, 0, 0, 1) 20%,
         rgba(0, 0, 0, 1) 80%,
-        rgba(0, 0, 0, 0) 100%
-      );
-      --webkit-mask-image: linear-gradient(
-        to left,
+        rgba(0, 0, 0, 0) 100%);
+    --webkit-mask-image: linear-gradient(to left,
         rgba(0, 0, 0, 0) 0%,
         rgba(0, 0, 0, 1) 20%,
         rgba(0, 0, 0, 1) 80%,
-        rgba(0, 0, 0, 0) 100%
-      );
-    }
+        rgba(0, 0, 0, 0) 100%);
+  }
 }
 
 .sectionWrapper {
   width: 1440px;
   position: relative;
-    display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -50,7 +46,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    background: var(--img-src) center/cover  no-repeat;
+    background: var(--img-src) center/cover no-repeat;
     height: 100vh;
     opacity: 0.5;
     mask-image: linear-gradient(#00000000, #000000, #00000000), linear-gradient(45deg, #00000000, #000000, #00000000);
@@ -151,7 +147,8 @@
 
 .btn {
 
-  &_backwards, &_forward {
+  &_backwards,
+  &_forward {
     background: transparent;
     height: 100vh;
     width: 100px;
@@ -165,6 +162,7 @@
       background: rgba(214, 214, 214, 0.121);
     }
   }
+
   &_backwards {
     left: 0;
 
@@ -176,9 +174,82 @@
 
   &_forward {
     right: 0.8%;
-    
+
     & img {
       width: 56px;
     }
   }
 }
+
+@media screen and (width <=1700px) {
+  .sectionWrapper {
+    padding: 0 100px;
+  }
+
+  .descrSection {
+    max-width: 70%;
+  }
+
+  .prjAchievements__item {
+    &>p {
+      font-size: 16px;
+      line-height: 18px;
+    }
+  }
+}
+
+@media screen and (width < 1280px) {
+  .root {
+    height: 100%;
+  }
+
+  .sectionWrapper {
+    align-items: start;
+    padding: var(--header-h);
+    overflow-y: scroll;
+  }
+
+  .childrenContentWrapper {
+    display: none;
+  }
+}
+
+@media screen and (width < 1000px) {
+  .sectionWrapper {
+    flex-direction: column;
+    justify-content: start;
+  }
+
+  .descrSection {
+    max-width: 100%;
+  }
+
+  .childrenWrapper {
+    width: 100%;
+    margin: 30px 0 0;
+  }
+}
+
+@media screen and (width <=900px) {
+  .root {
+    height: 100vh;
+  }
+
+  .sectionWrapper {
+    padding: var(--header-h) 50px;
+  }
+
+  .btn {
+
+    &_backwards,
+    &_forward {
+      width: 50px;
+
+      & img {
+        width: 32px;
+      }
+    }
+  }
+}
+
+@media screen and (width <=600px) {}

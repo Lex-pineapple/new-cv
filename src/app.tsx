@@ -83,11 +83,11 @@ function App() {
         <div id="content" className={styles.content} ref={containerRef}>
           {/* <Main className={styles.fullSlide} />
           <About className={styles.fullSlide} /> */}
-          <Stack className={styles.fullSlide} />
-          {/* <Projects className={styles.fullSlide} />
+          {/* <Stack className={styles.fullSlide} /> */}
+          {/* <Projects className={styles.fullSlide} /> */}
           <Reviews className={styles.fullSlide} />
-          <Future className={styles.fullSlide} />
-          <Contacts className={styles.fullSlide} /> */}
+          {/* <Future className={styles.fullSlide} /> */}
+          {/* <Contacts className={styles.fullSlide} /> */}
         </div>
       </div>
       {/* <Footer /> */}

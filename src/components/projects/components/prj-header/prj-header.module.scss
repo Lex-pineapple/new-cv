@@ -3,3 +3,11 @@
   font-weight: 900;
   font-size: 64px;
 }
+
+@media screen and (width <=600px) {
+  .root {
+    font-size: 48px;
+    line-height: 42px;
+    margin-bottom: 40px;
+  }
+}

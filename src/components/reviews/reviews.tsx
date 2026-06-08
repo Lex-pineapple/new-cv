@@ -6,6 +6,11 @@ import { ReviewCard } from "~components/reviews/components/review-card";
 import cn from "classnames";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { useMediaQuery } from "usehooks-ts";
+import { Pagination } from "swiper/modules";
 
 gsap.registerPlugin(useGSAP);
 
@@ -23,6 +28,8 @@ const data = [
 ];
 
 export const Reviews = ({ className }: TWithClassname) => {
+  const isMobile = useMediaQuery("(width <= 800px)");
+
   useGSAP(() => {
     gsap.from("#reviews-title", {
       x: 200,
@@ -67,10 +74,22 @@ export const Reviews = ({ className }: TWithClassname) => {
         <p id="reviews-title" className={styles.mainText}>
           Что обо мне говорят мои руководители
         </p>
-        <div className={styles.cards__wrapper}>
-          {data.map((item) => (
-            <ReviewCard {...item} />
-          ))}
+        <div className={styles.carousel__wrapper}>
+          <Swiper
+            modules={[Pagination]}
+            spaceBetween={50}
+            slidesPerView={isMobile ? 1 : 2}
+            onSlideChange={() => console.log("slide change")}
+            onSwiper={(swiper) => console.log(swiper)}
+            pagination={{ clickable: true, el: ".pagination" }}
+          >
+            {data.map((item) => (
+              <SwiperSlide>
+                <ReviewCard {...item} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div className={cn("pagination", styles.pagination)}></div>
         </div>
       </div>
     </section>
