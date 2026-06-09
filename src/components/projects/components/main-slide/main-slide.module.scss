@@ -80,7 +80,7 @@
   }
 }
 
-@media screen and (width < 1280px) {
+@media screen and (width <=1280px) {
   .sectionWrapper {
     padding: var(--header-h) 40px;
     height: 100%;
@@ -100,6 +100,7 @@
     &__wrapper {
       flex-direction: row;
       padding: 20px 0 0;
+      gap: 20px;
     }
 
     &__number {

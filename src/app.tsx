@@ -13,8 +13,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { Stack } from "~components/stack";
 import { Reviews } from "~components/reviews";
-import { ProjectModal } from "~components/projects/components/projects-carousel/components/project-modal";
-import { AlfaleasingLogo } from "~components/projects/components/alfaleasing-logo";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
@@ -26,16 +24,16 @@ function App() {
   const { contextSafe } = useGSAP(
     () => {
       const mm = gsap.matchMedia();
-      mm.add("(width > 1280px)", () => {
+      mm.add("(width > 1300px)", () => {
         const initialVertContext = gsap.context(() => {
           gsap.timeline({
             scrollTrigger: {
               trigger: "#main",
               start: "top top",
-              endTrigger: "#projects",
-              end: "bottom bottom",
+              endTrigger: "#stack",
+              end: "top top",
               snap: {
-                snapTo: 1 / 3,
+                snapTo: 1 / 2,
                 duration: { min: 0.25, max: 0.75 },
                 delay: 0.125,
                 ease: "power1.inOut",

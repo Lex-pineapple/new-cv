@@ -44,7 +44,7 @@
   }
 }
 
-@media screen and (width < 1280px) {
+@media screen and (width <=1280px) {
   .root {
     height: 100%;
     padding-top: var(--header-h);

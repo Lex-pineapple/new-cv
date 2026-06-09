@@ -33,7 +33,7 @@ export const StackItems = ({
   const itemRefs = useRef<HTMLParagraphElement[]>([]);
   const [paths, setPaths] = useState<string[]>([]);
   const [circleCoords, setCircleCoords] = useState<TCoords[]>([]);
-  const isTablet = useMediaQuery("(width < 1200px)");
+  const isTablet = useMediaQuery("(height < 1200px)");
   const isMobile = useMediaQuery("(width <= 600px)");
 
   const updatePath = () => {
