@@ -5,11 +5,15 @@ import "swiper/css/pagination";
 
 import styles from "./projects-carousel.module.scss";
 import type { CSSProperties } from "react";
+import { useModalContext } from "~/providers";
+import cn from "classnames";
+import { useMediaQuery } from "usehooks-ts";
 
 const projectsData = [
   {
     title: "iLabU Test Kits",
     imgSrc: "/alfaleasing-bg.jpg",
+    data: {},
   },
   {
     title: "iLabU Test Kits",
@@ -38,16 +42,27 @@ const projectsData = [
 ];
 
 export const ProjectsCarousel = () => {
+  const { onModalClick } = useModalContext();
+  const isTablet = useMediaQuery("(width < 900px)");
+  const isMobile = useMediaQuery("(width < 500px)");
+
+  const getSlidesPerView = (isTablet: boolean, isMobile: boolean) => {
+    if (isMobile) return 1;
+    if (isTablet) return 2;
+    else return 4;
+  };
+
   return (
     <div className={styles.carousel}>
       <Swiper
         modules={[Pagination]}
         spaceBetween={50}
-        slidesPerView={2}
-        // pagination={{ clickable: true, el: ".pagination" }}
+        slidesPerView={getSlidesPerView(isTablet, isMobile)}
+        watchOverflow={false}
+        pagination={{ clickable: true, el: ".pagination-prj" }}
       >
         {projectsData.map((item) => (
-          <SwiperSlide>
+          <SwiperSlide style={{ width: "300px" }}>
             <div
               className={styles.card}
               style={
@@ -55,12 +70,14 @@ export const ProjectsCarousel = () => {
                   "--bg-img": `url('${item.imgSrc}')`,
                 } as CSSProperties
               }
+              onClick={() => onModalClick(item.data)}
             >
               <div className={styles.card__title}>{item.title}</div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
+      <div className={cn("pagination-prj", styles.pagination)}></div>
     </div>
   );
 };

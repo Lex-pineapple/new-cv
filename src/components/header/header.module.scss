@@ -60,11 +60,12 @@
     &__wrapper {
       position: fixed;
       width: 100vw;
-      height: 50vh;
+      height: fit-content;
+      padding-bottom: 30px;
       top: 0;
       left: 0;
       background: var(--bg-main);
-      transform: translateY(-100vh);
+      transform: translateY(-500px);
       transition: transform .4s ease;
 
       &_open {
@@ -84,6 +85,6 @@
 
 @media screen and (width < 600px) {
   .linksNav__wrapper {
-    height: 100vh;
+    height: 300px;
   }
 }

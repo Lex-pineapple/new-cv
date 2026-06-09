@@ -13,6 +13,7 @@ import { LKPPrj } from "~components/projects/components/lkp-prj";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useMediaQuery } from "usehooks-ts";
+import { ModalProvider } from "~/providers";
 
 gsap.registerPlugin(useGSAP);
 
@@ -75,57 +76,59 @@ export const Projects = ({ className }: TWithClassname) => {
   });
 
   return (
-    <section
-      id="projects"
-      className={cn(styles.root, className, {
-        [styles.isDesktopSmall]: isDesktopSmall,
-      })}
-      ref={projectsRef}
-    >
-      <MainSlide
-        className={styles.slide}
-        setActive={() => onShowAllProjects()}
-        isSmallVariant={isDesktopSmall}
-      />
-      {!isDesktopSmall && (
-        <>
-          <IlabuPrj
-            onBackwardsClick={onPrjBackwards}
-            onForwardClick={onPrjForward}
-            className={styles.slide}
-          />
-          <ClevertecSitePrj
-            onBackwardsClick={onPrjBackwards}
-            onForwardClick={onPrjForward}
-            className={styles.slide}
-          />
-          <CleverscopePrj
-            onBackwardsClick={onPrjBackwards}
-            onForwardClick={onPrjForward}
-            className={styles.slide}
-          />
-          <RetroBonusPrj
-            onBackwardsClick={onPrjBackwards}
-            onForwardClick={onPrjForward}
-            className={styles.slide}
-          />
-          <PlatformPrj
-            onBackwardsClick={onPrjBackwards}
-            onForwardClick={onPrjForward}
-            className={styles.slide}
-          />
-          <FormUiPrj
-            onBackwardsClick={onPrjBackwards}
-            onForwardClick={onPrjForward}
-            className={styles.slide}
-          />
-          <LKPPrj
-            onBackwardsClick={onPrjBackwards}
-            onForwardClick={onPrjForward}
-            className={styles.slide}
-          />
-        </>
-      )}
-    </section>
+    <ModalProvider>
+      <section
+        id="projects"
+        className={cn(styles.root, className, {
+          [styles.isDesktopSmall]: isDesktopSmall,
+        })}
+        ref={projectsRef}
+      >
+        <MainSlide
+          className={styles.slide}
+          setActive={() => onShowAllProjects()}
+          isSmallVariant={isDesktopSmall}
+        />
+        {!isDesktopSmall && (
+          <>
+            <IlabuPrj
+              onBackwardsClick={onPrjBackwards}
+              onForwardClick={onPrjForward}
+              className={styles.slide}
+            />
+            <ClevertecSitePrj
+              onBackwardsClick={onPrjBackwards}
+              onForwardClick={onPrjForward}
+              className={styles.slide}
+            />
+            <CleverscopePrj
+              onBackwardsClick={onPrjBackwards}
+              onForwardClick={onPrjForward}
+              className={styles.slide}
+            />
+            <RetroBonusPrj
+              onBackwardsClick={onPrjBackwards}
+              onForwardClick={onPrjForward}
+              className={styles.slide}
+            />
+            <PlatformPrj
+              onBackwardsClick={onPrjBackwards}
+              onForwardClick={onPrjForward}
+              className={styles.slide}
+            />
+            <FormUiPrj
+              onBackwardsClick={onPrjBackwards}
+              onForwardClick={onPrjForward}
+              className={styles.slide}
+            />
+            <LKPPrj
+              onBackwardsClick={onPrjBackwards}
+              onForwardClick={onPrjForward}
+              className={styles.slide}
+            />
+          </>
+        )}
+      </section>
+    </ModalProvider>
   );
 };

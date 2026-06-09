@@ -1,10 +1,11 @@
 import type { CSSProperties, ReactNode } from "react";
 import styles from "./project-modal.module.scss";
 import { Closer } from "~assets/closer";
+import cn from "classnames";
 
-type TProjectModal = {
+export type TProjectData = {
   title: string;
-  companyIcon: ReactNode;
+  companyIcon?: ReactNode;
   desc: string;
   items: {
     icon: string;
@@ -23,8 +24,15 @@ type TProjectModal = {
   };
 };
 
+type TProjectModal = {
+  isOpen: boolean;
+  onClose: () => void;
+} & TProjectData;
+
 export const ProjectModal = ({
   title = "TExt text text",
+  isOpen,
+  onClose,
   companyIcon,
   desc = "Приложение для ведения основных бизнес-процессов компании: управление сотрудниками (проведение калибровок, учет отпусков, персональных и контактных данных сотрудников, зарплат, отправки CV заказчикам), управление проектами и заказчиками, управление договорами и приложениями к ним, ведение документооборота.",
   items = [
@@ -97,7 +105,9 @@ export const ProjectModal = ({
 }: TProjectModal) => {
   return (
     <div
-      className={styles.overlay}
+      className={cn(styles.overlay, {
+        [styles.overlay_open]: isOpen,
+      })}
       style={
         {
           "--accent": colors.accent,
@@ -112,7 +122,7 @@ export const ProjectModal = ({
         <div className={styles.modal__header}>
           <div className={styles.header__title}>{title}</div>
           <div className={styles.header__closerWrapper}>
-            <button className={styles.header__closer}>
+            <button className={styles.header__closer} onClick={onClose}>
               <Closer color={colors.textAccent} />
             </button>
           </div>
