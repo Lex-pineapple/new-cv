@@ -1,15 +1,21 @@
 .mockup {
   &__device {
+    --width: 700px;
+    --height: 303px;
+    --rightPos: -17%;
     position: absolute;
     z-index: 10;
     top: 40vh;
-    right: -17%;
-    width: 700px;
-    height: 303px;
+    right: var(--rightPos);
+    width: var(--width);
+    height: var(--height);
     overflow: hidden;
   }
 
   &__device_phone {
+    --widthMob: 170px;
+    --heightMob: 321px;
+    --rightPosMob: -17%;
     position: absolute;
     z-index: 10;
     top: 40vh;
@@ -21,15 +27,15 @@
   }
 
   &__imgSite {
-    left: 142px;
-    width: 411px;
+    left: calc(var(--width) * 0.2028);
+    width: calc(var(--width) * 0.587);
     position: absolute;
     animation: scroll 20s ease-in-out infinite alternate;
   }
 
   &__imgSite_phone {
-    left: 15px;
-    width: 146px;
+    left: calc(var(--widthMob) * 0.08823);
+    width: calc(var(--widthMob) * 0.8588);
     position: absolute;
     animation: scroll 20s ease-in-out infinite alternate;
     border-radius: 20px;
@@ -37,13 +43,13 @@
 
   &__imgDevice {
     position: absolute;
-    width: 700px;
+    width: var(--width);
     top: -30.9%;
   }
 
   &__imgDevice_phone {
     position: absolute;
-    width: 400px;
+    width: calc(var(--widthMob) * 2.3529);
     top: -12.2%;
     left: -65%;
   }
@@ -51,10 +57,25 @@
 
 
 @keyframes scroll {
-   0% {
+  0% {
     transform: translateY(0);
   }
+
   100% {
-    transform: translateY(-50%); 
+    transform: translateY(-50%);
+  }
+}
+
+@media screen and (width < 1700px) {
+  .mockup {
+    &__device {
+      --width: 450px;
+      --height: 194.7px;
+      --leftPos: -70%;
+
+      &_phone {
+        display: none;
+      }
+    }
   }
 }

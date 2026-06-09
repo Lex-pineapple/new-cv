@@ -12,6 +12,7 @@ import { FormUiPrj } from "~components/projects/components/form-ui-prj";
 import { LKPPrj } from "~components/projects/components/lkp-prj";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useMediaQuery } from "usehooks-ts";
 
 gsap.registerPlugin(useGSAP);
 
@@ -22,6 +23,7 @@ export type TPrjType = {
 
 export const Projects = ({ className }: TWithClassname) => {
   const projectsRef = useRef<HTMLDivElement>(null);
+  const isDesktopSmall = useMediaQuery("(width < 1400px)");
 
   const { contextSafe } = useGSAP(() => {});
 
@@ -75,48 +77,55 @@ export const Projects = ({ className }: TWithClassname) => {
   return (
     <section
       id="projects"
-      className={cn(styles.root, className)}
+      className={cn(styles.root, className, {
+        [styles.isDesktopSmall]: isDesktopSmall,
+      })}
       ref={projectsRef}
     >
       <MainSlide
         className={styles.slide}
         setActive={() => onShowAllProjects()}
+        isSmallVariant={isDesktopSmall}
       />
-      <IlabuPrj
-        onBackwardsClick={onPrjBackwards}
-        onForwardClick={onPrjForward}
-        className={styles.slide}
-      />
-      <ClevertecSitePrj
-        onBackwardsClick={onPrjBackwards}
-        onForwardClick={onPrjForward}
-        className={styles.slide}
-      />
-      <CleverscopePrj
-        onBackwardsClick={onPrjBackwards}
-        onForwardClick={onPrjForward}
-        className={styles.slide}
-      />
-      <RetroBonusPrj
-        onBackwardsClick={onPrjBackwards}
-        onForwardClick={onPrjForward}
-        className={styles.slide}
-      />
-      <PlatformPrj
-        onBackwardsClick={onPrjBackwards}
-        onForwardClick={onPrjForward}
-        className={styles.slide}
-      />
-      <FormUiPrj
-        onBackwardsClick={onPrjBackwards}
-        onForwardClick={onPrjForward}
-        className={styles.slide}
-      />
-      <LKPPrj
-        onBackwardsClick={onPrjBackwards}
-        onForwardClick={onPrjForward}
-        className={styles.slide}
-      />
+      {!isDesktopSmall && (
+        <>
+          <IlabuPrj
+            onBackwardsClick={onPrjBackwards}
+            onForwardClick={onPrjForward}
+            className={styles.slide}
+          />
+          <ClevertecSitePrj
+            onBackwardsClick={onPrjBackwards}
+            onForwardClick={onPrjForward}
+            className={styles.slide}
+          />
+          <CleverscopePrj
+            onBackwardsClick={onPrjBackwards}
+            onForwardClick={onPrjForward}
+            className={styles.slide}
+          />
+          <RetroBonusPrj
+            onBackwardsClick={onPrjBackwards}
+            onForwardClick={onPrjForward}
+            className={styles.slide}
+          />
+          <PlatformPrj
+            onBackwardsClick={onPrjBackwards}
+            onForwardClick={onPrjForward}
+            className={styles.slide}
+          />
+          <FormUiPrj
+            onBackwardsClick={onPrjBackwards}
+            onForwardClick={onPrjForward}
+            className={styles.slide}
+          />
+          <LKPPrj
+            onBackwardsClick={onPrjBackwards}
+            onForwardClick={onPrjForward}
+            className={styles.slide}
+          />
+        </>
+      )}
     </section>
   );
 };

@@ -5,14 +5,20 @@ import cn from "classnames";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
+import { ProjectsCarousel } from "~components/projects/components/projects-carousel";
 
 gsap.registerPlugin(useGSAP);
 
 type TMainSlide = {
   setActive: () => void;
+  isSmallVariant: boolean;
 } & TWithClassname;
 
-export const MainSlide = ({ className, setActive }: TMainSlide) => {
+export const MainSlide = ({
+  className,
+  setActive,
+  isSmallVariant,
+}: TMainSlide) => {
   const firstStatRef = useRef<HTMLSpanElement>(null);
   const secondStatRef = useRef<HTMLSpanElement>(null);
 
@@ -106,13 +112,15 @@ export const MainSlide = ({ className, setActive }: TMainSlide) => {
               поддержки OpenWebUI) и развиваться в AI / LLM / data-driven
               продуктах.
             </p>
-            <button
-              id="more-projects-btn"
-              className={styles.btn}
-              onClick={() => setActive()}
-            >
-              Посмотреть все проекты
-            </button>
+            {!isSmallVariant && (
+              <button
+                id="more-projects-btn"
+                className={styles.btn}
+                onClick={() => setActive()}
+              >
+                Посмотреть все проекты
+              </button>
+            )}
           </div>
           <div className={styles.statistics__wrapper}>
             <p className={styles.statistics__item}>
@@ -140,6 +148,7 @@ export const MainSlide = ({ className, setActive }: TMainSlide) => {
             </p>
           </div>
         </div>
+        {isSmallVariant && <ProjectsCarousel />}
       </div>
     </div>
   );

@@ -13,6 +13,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { Stack } from "~components/stack";
 import { Reviews } from "~components/reviews";
+import { ProjectModal } from "~components/projects/components/projects-carousel/components/project-modal";
+import { AlfaleasingLogo } from "~components/projects/components/alfaleasing-logo";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
@@ -84,13 +86,14 @@ function App() {
           {/* <Main className={styles.fullSlide} />
           <About className={styles.fullSlide} /> */}
           {/* <Stack className={styles.fullSlide} /> */}
-          {/* <Projects className={styles.fullSlide} /> */}
+          <Projects className={styles.fullSlide} />
           {/* <Reviews className={styles.fullSlide} /> */}
-          <Future className={styles.fullSlide} />
-          <Contacts className={styles.fullSlide} />
+          {/* <Future className={styles.fullSlide} /> */}
+          {/* <Contacts className={styles.fullSlide} /> */}
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
+      <ProjectModal companyIcon={<AlfaleasingLogo />} />
     </div>
   );
 }
