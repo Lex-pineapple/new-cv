@@ -14,6 +14,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { Stack } from "~components/stack";
 import { Reviews } from "~components/reviews";
 import { BottomLine } from "~components/bottom-line";
+import "./config/i18n";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);

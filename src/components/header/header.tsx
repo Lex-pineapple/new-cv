@@ -4,6 +4,7 @@ import styles from "./header.module.scss";
 import { BurgerBtn } from "~components/header/components/burger-btn";
 import { useState } from "react";
 import cn from "classnames";
+import { LangSwitcher } from "~components/lang-switcher";
 
 const LINKS = [
   { name: "Домой", href: "#main" },
@@ -51,6 +52,9 @@ export const Header = ({ onLinkClick }: THeader) => {
               ))}
             </ul>
           </nav>
+          <div className={styles.langSwitcher__wrapper}>
+            <LangSwitcher />
+          </div>
         </div>
         {isMobile && (
           <BurgerBtn open={navOpen} onClick={() => setNavOpen(!navOpen)} />

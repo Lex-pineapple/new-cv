@@ -8,6 +8,7 @@ import { SplitText } from "gsap/SplitText";
 import TextPlugin from "gsap/TextPlugin";
 import { LinedText } from "~/shared/lined-text";
 import { useMediaQuery } from "usehooks-ts";
+import { LangSwitcher } from "~components/lang-switcher";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(SplitText);
@@ -15,6 +16,8 @@ gsap.registerPlugin(TextPlugin);
 
 export const Main = ({ className }: TWithClassname) => {
   const isMobile = useMediaQuery("(width < 900px)");
+  const isTablet = useMediaQuery("(width < 1050px)");
+
   const ref = useRef(null);
   useGSAP(
     () => {
@@ -194,19 +197,7 @@ export const Main = ({ className }: TWithClassname) => {
         <div id="shape-star-left" className={styles.shape_star_left}></div>
         <div id="shape-circle" className={styles.shape_circle}></div>
       </div>
-      <div className={styles.langSwitcher__wrapper}>
-        <ul className={styles.langSwitcher__container}>
-          <li className={styles.langSwitcher__item}>EN</li>
-          <li
-            className={cn(
-              styles.langSwitcher__item,
-              styles.langSwitcher__item_active,
-            )}
-          >
-            RU
-          </li>
-        </ul>
-      </div>
+      {!isTablet && <LangSwitcher />}
       <div className={styles.scrollPrompter}></div>
     </section>
   );

@@ -1,0 +1,58 @@
+.langSwitcher {
+  &__wrapper {
+    color: var(--text-main);
+    position: absolute;
+    left: 10%;
+    bottom: 10%;
+  }
+
+  &__container {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 50px;
+
+    & input {
+      display: none;
+    }
+  }
+
+  &__item {
+    font-weight: 600;
+    cursor: pointer;
+
+
+
+    &_active {
+      color: var(--accent-main);
+      font-weight: 900;
+    }
+  }
+}
+
+@media screen and (width <=1390px) {
+  .langSwitcher {
+    &__wrapper {
+      position: relative;
+      left: 0;
+      top: 40%;
+    }
+  }
+}
+
+@media screen and (width <=1050px) {
+  .langSwitcher {
+    &__wrapper {
+      position: relative;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+    
+    &__container {
+    
+      justify-content: center;
+    }
+  }
+}
+

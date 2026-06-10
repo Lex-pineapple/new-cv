@@ -148,32 +148,7 @@ $m: list.append($m, from 50% + $d*math.cos(0) 50% + $d*math.sin(0), comma);
   }
 }
 
-// langSwitcher
 
-.langSwitcher {
-  &__wrapper {
-    color: var(--text-main);
-    position: absolute;
-    left: 10%;
-    bottom: 10%;
-  }
-
-  &__container {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 50px;
-  }
-
-  &__item {
-    font-weight: 600;
-
-    &_active {
-      color: var(--accent-main);
-      font-weight: 900;
-    }
-  }
-}
 
 // shapes
 
@@ -306,26 +281,12 @@ $m: list.append($m, from 50% + $d*math.cos(0) 50% + $d*math.sin(0), comma);
       position: relative;
     }
   }
-
-  .langSwitcher {
-    &__wrapper {
-      position: relative;
-      left: 0;
-      top: 40%;
-    }
-  }
 }
 
 @media screen and (width <=1050px) {
   .root {
     height: auto;
     padding-top: var(--header-h);
-  }
-  .langSwitcher__wrapper {
-    position: absolute;
-    left: 85%;
-    top: 90%;
-    z-index: 10;
   }
 
   .box {
