@@ -13,6 +13,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { Stack } from "~components/stack";
 import { Reviews } from "~components/reviews";
+import { BottomLine } from "~components/bottom-line";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
@@ -90,6 +91,7 @@ function App() {
           <Contacts className={styles.fullSlide} />
         </div>
       </div>
+      <BottomLine />
       <Footer />
     </div>
   );

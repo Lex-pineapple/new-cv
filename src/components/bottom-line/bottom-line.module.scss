@@ -1,0 +1,12 @@
+.root {
+  background: var(--accent-main);
+  padding: 10px 20px;
+  text-align: end;
+  position: sticky;
+  bottom: 0;
+  z-index: 999;
+}
+
+.link {
+  color: black;
+}
