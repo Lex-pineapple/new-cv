@@ -9,6 +9,7 @@ import TextPlugin from "gsap/TextPlugin";
 import { LinedText } from "~/shared/lined-text";
 import { useMediaQuery } from "usehooks-ts";
 import { LangSwitcher } from "~components/lang-switcher";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(SplitText);
@@ -17,6 +18,7 @@ gsap.registerPlugin(TextPlugin);
 export const Main = ({ className }: TWithClassname) => {
   const isMobile = useMediaQuery("(width < 900px)");
   const isTablet = useMediaQuery("(width < 1050px)");
+  const { t } = useTranslation();
 
   const ref = useRef(null);
   useGSAP(
@@ -144,10 +146,10 @@ export const Main = ({ className }: TWithClassname) => {
       <div className={styles.sectionWrapper}>
         <h1 id="h1" className={styles.headline}>
           <span id="h1-lastName" className={styles.headline_color}>
-            Сонич
+            {t("main.lastName")}
           </span>
           <br />
-          <span id="h1-firstName">Анастасия</span>
+          <span id="h1-firstName">{t("main.firstName")}</span>
         </h1>
         <div className={styles.box}>
           <div id="circle-bg" className={styles.circleBg}>
@@ -162,18 +164,13 @@ export const Main = ({ className }: TWithClassname) => {
           </div>
         </div>
         <div className={styles.desc__wrapper}>
-          <LinedText className="main-hr">Frontend-разработчик</LinedText>
+          <LinedText className="main-hr">{t("main.position")}</LinedText>
           <p id="desc-title" className={styles.desc__headline}>
-            Оживляю макеты с помощью чистого кода и передовых технологий
+            {t("main.tagline")}
           </p>
           <div id="desc" className={styles.desc__main}>
-            <p className={styles.desc__text}>
-              Специализируюсь на создании динамических веб-приложений (SPA).
-            </p>
-            <p className={styles.desc__text}>
-              Проектирую поддерживаемую архитектуру интерфейса, уделяя внимание
-              деталям и производительности.
-            </p>
+            <p className={styles.desc__text}>{t("main.textMainOne")}</p>
+            <p className={styles.desc__text}>{t("main.textMainTwo")}</p>
           </div>
           <ul id="contacts-main" className={styles.contacts}>
             <li className={styles.contacts__item}>

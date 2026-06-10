@@ -11,24 +11,19 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { useMediaQuery } from "usehooks-ts";
 import { Pagination } from "swiper/modules";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(useGSAP);
 
-const data = [
-  {
-    name: "Михаил Шелест",
-    place: "Ктото гдето",
-    text: "Таким образом, укрепление и развитие внутренней структуры не оставляет шанса для направлений прогрессивного развития. Банальные, но неопровержимые выводы, а также диаграммы связей заблокированы в рамках своих собственных рациональных ограничений. Принимая во внимание показатели успешности, новая модель организационной деятельности позволяет выполнить важные задания по разработке поэтапного и последовательного развития общества.",
-  },
-  {
-    name: "Алексей Володько",
-    place: "Ктото гдето",
-    text: "Таким образом, укрепление и развитие внутренней структуры не оставляет шанса для направлений прогрессивного развития. Банальные, но неопровержимые выводы, а также диаграммы связей заблокированы в рамках своих собственных рациональных ограничений. Принимая во внимание показатели успешности, новая модель организационной деятельности позволяет выполнить важные задания по разработке поэтапного и последовательного развития общества.",
-  },
-];
+type TReviews = {
+  name: string;
+  place: string;
+  text: string;
+};
 
 export const Reviews = ({ className }: TWithClassname) => {
   const isMobile = useMediaQuery("(width <= 800px)");
+  const { t } = useTranslation();
 
   useGSAP(() => {
     gsap.from("#reviews-title", {
@@ -58,6 +53,8 @@ export const Reviews = ({ className }: TWithClassname) => {
     });
   });
 
+  console.log(t("reviews.reviews", { returnObjects: true }));
+
   return (
     <section id="reviews" className={cn(className, styles.root)}>
       <div className={styles.sectionWrapper}>
@@ -69,10 +66,10 @@ export const Reviews = ({ className }: TWithClassname) => {
             end: "bottom center",
           }}
         >
-          Рекомендации
+          {t("reviews.header")}
         </LinedText>
         <p id="reviews-title" className={styles.mainText}>
-          Что обо мне говорят мои руководители
+          {t("reviews.tagline")}
         </p>
         <div className={styles.carousel__wrapper}>
           <Swiper
@@ -83,11 +80,13 @@ export const Reviews = ({ className }: TWithClassname) => {
             onSwiper={(swiper) => console.log(swiper)}
             pagination={{ clickable: true, el: ".pagination" }}
           >
-            {data.map((item) => (
-              <SwiperSlide>
-                <ReviewCard {...item} />
-              </SwiperSlide>
-            ))}
+            {(t("reviews.reviews", { returnObjects: true }) as TReviews[]).map(
+              (item) => (
+                <SwiperSlide>
+                  <ReviewCard {...item} />
+                </SwiperSlide>
+              ),
+            )}
           </Swiper>
           <div className={cn("pagination", styles.pagination)}></div>
         </div>

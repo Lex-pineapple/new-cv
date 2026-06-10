@@ -4,6 +4,7 @@ import styles from "./contacts.module.scss";
 import { ContactItem } from "~components/contacts/components/contact-item";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(useGSAP);
 
@@ -31,6 +32,8 @@ const contactData = [
 ];
 
 export const Contacts = ({ className }: TWithClassname) => {
+  const { t } = useTranslation();
+
   useGSAP(() => {
     gsap.from(".contact-item", {
       y: 30,
@@ -49,7 +52,7 @@ export const Contacts = ({ className }: TWithClassname) => {
   return (
     <section id="contacts" className={cn(styles.root, className)}>
       <div className={styles.sectionWrapper}>
-        <p className={styles.heading}>Мои контакты</p>
+        <p className={styles.heading}>{t("contacts.header")}</p>
         <div className={styles.items__wrapper}>
           {contactData.map((item) => (
             <ContactItem {...item} />

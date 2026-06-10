@@ -4,10 +4,13 @@ import styles from "./future.module.scss";
 import { LinedText } from "~/shared/lined-text";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(useGSAP);
 
 export const Future = ({ className }: TWithClassname) => {
+  const { t } = useTranslation();
+
   useGSAP(() => {
     gsap.from(".future-text", {
       y: 30,
@@ -33,24 +36,11 @@ export const Future = ({ className }: TWithClassname) => {
             end: "bottom center",
           }}
         >
-          Развитие
+          {t("future.header")}
         </LinedText>
         <div className={styles.text__wrapper}>
-          <p className={cn(styles.text, "future-text")}>
-            В рамках спецификации современных стандартов, некоторые особенности
-            внутренней политики и по сей день остаются уделом либералов, которые
-            жаждут быть в равной степени предоставлены сами себе. Но
-            существующая теория требует от нас анализа анализа существующих
-            паттернов поведения. Как принято считать, явные признаки победы
-            институционализации ассоциативно распределены по отраслям.
-          </p>
-          <p className={cn(styles.text, "future-text")}>
-            Вот вам яркий пример современных тенденций — перспективное
-            планирование предполагает независимые способы реализации направлений
-            прогрессивного развития. Таким образом, сплочённость команды
-            профессионалов предполагает независимые способы реализации
-            дальнейших направлений развития.
-          </p>
+          <p className={cn(styles.text, "future-text")}>{t("future.p1")}</p>
+          <p className={cn(styles.text, "future-text")}>{t("future.p2")}</p>
         </div>
       </div>
     </section>

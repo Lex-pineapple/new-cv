@@ -5,15 +5,16 @@ import { BurgerBtn } from "~components/header/components/burger-btn";
 import { useState } from "react";
 import cn from "classnames";
 import { LangSwitcher } from "~components/lang-switcher";
+import { useTranslation } from "react-i18next";
 
 const LINKS = [
-  { name: "Домой", href: "#main" },
-  { name: "Обо мне", href: "#about" },
-  { name: "Мой стэк", href: "#stack" },
-  { name: "Проекты", href: "#projects" },
-  { name: "Реккомендации", href: "#reviews" },
-  { name: "Будущее", href: "#future" },
-  { name: "Контакты", href: "#contacts" },
+  { id: "home", href: "#main" },
+  { id: "about", href: "#about" },
+  { id: "stack", href: "#stack" },
+  { id: "projects", href: "#projects" },
+  { id: "recommend", href: "#reviews" },
+  { id: "future", href: "#future" },
+  { id: "contacts", href: "#contacts" },
 ];
 
 type THeader = {
@@ -23,6 +24,9 @@ type THeader = {
 export const Header = ({ onLinkClick }: THeader) => {
   const isMobile = useMediaQuery("(width < 1050px)");
   const [navOpen, setNavOpen] = useState(false);
+  const { t } = useTranslation();
+
+  console.log("t", t("header.links.about"));
 
   const onAnchorClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
@@ -43,18 +47,21 @@ export const Header = ({ onLinkClick }: THeader) => {
           <nav className={styles.linksNav}>
             <ul className={styles.linksWrapper}>
               {LINKS.map((link) => (
-                <li key={link.name}>
+                <li key={link.id}>
                   <HeaderLink
                     onClick={(e) => onAnchorClick(e, link.href)}
-                    {...link}
+                    name={t(`header.links.${link.id}`)}
+                    href={link.href}
                   />
                 </li>
               ))}
             </ul>
           </nav>
-          <div className={styles.langSwitcher__wrapper}>
-            <LangSwitcher />
-          </div>
+          {isMobile && (
+            <div className={styles.langSwitcher__wrapper}>
+              <LangSwitcher />
+            </div>
+          )}
         </div>
         {isMobile && (
           <BurgerBtn open={navOpen} onClick={() => setNavOpen(!navOpen)} />

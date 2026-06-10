@@ -7,6 +7,7 @@ import { StackItems } from "~components/stack/components/stack-items/stack-items
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import DrawSVGPlugin from "gsap/DrawSVGPlugin";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(DrawSVGPlugin);
@@ -326,6 +327,7 @@ const rightStack = stackInfo.splice(middleIdx + 1);
 const leftStack = stackInfo.splice(0, middleIdx);
 
 export const Stack = ({ className }: TWithClassname) => {
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLHeadingElement>(null);
 
@@ -369,7 +371,7 @@ export const Stack = ({ className }: TWithClassname) => {
     <section id="stack" className={cn(styles.root, className)}>
       <div className={styles.sectionWrapper} ref={containerRef}>
         <h2 id="stack-heading" ref={headerRef} className={styles.stack_h2}>
-          Мой стек
+          {t("stack.header")}
         </h2>
         <div className={styles.stack__wrapper}>
           <div className={styles.stack__columns}>

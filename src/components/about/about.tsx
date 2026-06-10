@@ -6,11 +6,14 @@ import { SquigglyLine } from "~assets/squiggly-line";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import DrawSVGPlugin from "gsap/DrawSVGPlugin";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(DrawSVGPlugin);
 
 export const About = ({ className }: TWithClassname) => {
+  const { t } = useTranslation();
+
   useGSAP(() => {
     gsap.from(`.about-header`, {
       x: 200,
@@ -58,34 +61,14 @@ export const About = ({ className }: TWithClassname) => {
             end: "bottom center",
           }}
         >
-          Обо мне
+          {t("about.header")}
         </LinedText>
         <p className={cn(styles.about__header, "about-header")}>
-          Я фронтенд-разработчик с 4-летним коммерческим опытом.
+          {t("about.tagline")}
         </p>
-        <p className={cn(styles.about__text, "about-text")}>
-          В работе активно использую React 18+ и TypeScript – хуки, управление
-          состоянием, маршрутизацию, оптимизацию, доступность. Для состояния
-          применяю Redux Toolkit (также знакома с Zustand), для маршрутизации –
-          React Router. Настраивала сборку на Webpack и Vite, разбираюсь в code
-          splitting, мемоизации, виртуализации, умею работать с тяжёлыми
-          состояниями.
-        </p>
-        <p className={cn(styles.about__text, "about-text")}>
-          Интегрирую фронтенд с REST, GraphQL, WebSocket/SSE, знаю
-          OpenAPI/Swagger, использую Axios и Postman. Понимаю основы
-          безопасности: CSP, XSS mitigation, разграничение прав. Уделяю внимание
-          качеству: Jest / Vitest, Playwright / Cypress, Lighthouse, AXE,
-          Storybook, ESLint, Prettier.
-        </p>
-        <p className={cn(styles.about__text, "about-text")}>
-          Поддерживаю брендинг, локализацию, PWA-сценарии, роли и права. Работаю
-          с бэкенд-, AI- и платформенными командами, чтобы сценарии стабильно
-          работали. Знакома с Docker, CI/CD (GitHub Actions / GitLab CI), имею
-          опыт с дизайн-системами и компонентными библиотеками. Также готова
-          работать с Svelte / SvelteKit (для поддержки OpenWebUI) и развиваться
-          в AI / LLM / data-driven продуктах.
-        </p>
+        <p className={cn(styles.about__text, "about-text")}>{t("about.p1")}</p>
+        <p className={cn(styles.about__text, "about-text")}>{t("about.p2")}</p>
+        <p className={cn(styles.about__text, "about-text")}>{t("about.p3")}</p>
       </div>
       <div className={styles.svgLine_container}>
         <SquigglyLine className={cn(styles.line, "svg-line")} />
