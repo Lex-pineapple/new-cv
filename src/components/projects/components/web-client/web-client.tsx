@@ -37,7 +37,7 @@ export const WebClient = ({
 }: TWithClassname & TPrjType) => {
   return (
     <PrjTemplate
-      id={6}
+      id={5}
       onBackwardsClick={onBackwardsClick}
       onForwardClick={onForwardClick}
       stack={stack}

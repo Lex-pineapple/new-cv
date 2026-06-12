@@ -36,7 +36,7 @@ export const PlatformPrj = ({
 }: TWithClassname & TPrjType) => {
   return (
     <PrjTemplate
-      id={5}
+      id={6}
       onForwardClick={onForwardClick}
       onBackwardsClick={onBackwardsClick}
       stack={stack}
