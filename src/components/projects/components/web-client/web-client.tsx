@@ -1,4 +1,5 @@
 import { PrjTemplate } from "~components/projects/components/prj-template/prj-template";
+import { RgsLogo } from "~components/projects/components/rgs-logo";
 import type { TPrjType } from "~components/projects/projects";
 import type { TWithClassname } from "~types/general";
 
@@ -29,23 +30,23 @@ const stack = [
   },
 ];
 
-export const LKPPrj = ({
+export const WebClient = ({
   className,
   onBackwardsClick,
   onForwardClick,
 }: TWithClassname & TPrjType) => {
   return (
     <PrjTemplate
-      id={7}
-      onForwardClick={onForwardClick}
+      id={6}
       onBackwardsClick={onBackwardsClick}
+      onForwardClick={onForwardClick}
       stack={stack}
-      imgSrc="/alfaleasing-bg.jpg"
+      imgSrc="/rgs-bg.jpg"
       className={className}
       colorMain={"#ffa0a0"}
       colorSecondary={"#fffcfc"}
-      companyLogo={undefined}
-      translationKey="lkp"
+      companyLogo={<RgsLogo />}
+      translationKey="web-client"
     />
   );
 };

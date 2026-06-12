@@ -5,18 +5,18 @@ import type { TWithClassname } from "~types/general";
 import { PrjHeader } from "~components/projects/components/prj-header";
 import { PrjDescr } from "~components/projects/components/prj-descr";
 import cn from "classnames";
+import { useTranslation } from "react-i18next";
+
+type TChivo = {
+  icon: string;
+  text: string;
+};
 
 type TPrjTemplate = {
   id: number;
-  title: string;
-  description: string;
   colorMain: string;
   colorSecondary: string;
   companyLogo: ReactNode;
-  data: {
-    text: string;
-    icon: string;
-  }[];
   imgSrc: string;
   stack: {
     icon: string;
@@ -24,23 +24,24 @@ type TPrjTemplate = {
   }[];
   onForwardClick: (id: number) => void;
   onBackwardsClick: (id: number) => void;
+  translationKey: string;
 } & TWithClassname;
 
 export const PrjTemplate = ({
   id,
   children,
-  title,
-  description,
   colorMain,
   colorSecondary,
-  data,
   className,
   imgSrc,
   companyLogo,
   stack,
   onForwardClick,
   onBackwardsClick,
+  translationKey,
 }: PropsWithChildren<TPrjTemplate>) => {
+  const { t } = useTranslation();
+
   return (
     <div
       id={`prj${id}`}
@@ -56,10 +57,14 @@ export const PrjTemplate = ({
       <div className={styles.sectionWrapper}>
         <div className={styles.descrSection}>
           {companyLogo}
-          <PrjHeader>{title}</PrjHeader>
-          <PrjDescr>{description}</PrjDescr>
+          <PrjHeader>{t(`projects.${translationKey}.title`)}</PrjHeader>
+          <PrjDescr>{t(`projects.${translationKey}.description`)}</PrjDescr>
           <div className={styles.prjAchievements__wrapper}>
-            {data.map((item) => (
+            {(
+              t(`projects.${translationKey}.chivos`, {
+                returnObjects: true,
+              }) as TChivo[]
+            ).map((item) => (
               <div
                 className={cn(styles.prjAchievements__item, "prj-achievement")}
               >

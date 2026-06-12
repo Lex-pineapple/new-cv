@@ -27,7 +27,7 @@ function App() {
     () => {
       const mm = gsap.matchMedia();
       mm.add("(width > 1300px)", () => {
-        const initialVertContext = gsap.context(() => {
+        gsap.context(() => {
           gsap.timeline({
             scrollTrigger: {
               trigger: "#main",
@@ -44,7 +44,7 @@ function App() {
           });
         }, containerRef);
 
-        const finalVertContext = gsap.context(() => {
+        gsap.context(() => {
           gsap.timeline({
             scrollTrigger: {
               trigger: "#reviews",
@@ -61,11 +61,6 @@ function App() {
           });
         }, containerRef);
       });
-
-      return () => {
-        // initialVertContext.revert();
-        // finalVertContext.revert();
-      };
     },
     { scope: containerRef },
   );

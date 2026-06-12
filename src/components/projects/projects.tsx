@@ -8,12 +8,12 @@ import { ClevertecSitePrj } from "~components/projects/components/clevertec-site
 import { CleverscopePrj } from "~components/projects/components/cleverscope-prj";
 import { RetroBonusPrj } from "~components/projects/components/retro-bouns-prj";
 import { PlatformPrj } from "~components/projects/components/platform-prj";
-import { FormUiPrj } from "~components/projects/components/form-ui-prj";
 import { LKPPrj } from "~components/projects/components/lkp-prj";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useMediaQuery } from "usehooks-ts";
 import { ModalProvider } from "~/providers";
+import { WebClient } from "~components/projects/components/web-client";
 
 gsap.registerPlugin(useGSAP);
 
@@ -111,12 +111,12 @@ export const Projects = ({ className }: TWithClassname) => {
               onForwardClick={onPrjForward}
               className={styles.slide}
             />
-            <PlatformPrj
+            <WebClient
               onBackwardsClick={onPrjBackwards}
               onForwardClick={onPrjForward}
               className={styles.slide}
             />
-            <FormUiPrj
+            <PlatformPrj
               onBackwardsClick={onPrjBackwards}
               onForwardClick={onPrjForward}
               className={styles.slide}

@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { ProjectsCarousel } from "~components/projects/components/projects-carousel";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(useGSAP);
 
@@ -21,6 +22,7 @@ export const MainSlide = ({
 }: TMainSlide) => {
   const firstStatRef = useRef<HTMLSpanElement>(null);
   const secondStatRef = useRef<HTMLSpanElement>(null);
+  const { t } = useTranslation();
 
   useGSAP(() => {
     gsap.from(".projectsMain-text", {
@@ -84,33 +86,18 @@ export const MainSlide = ({
           }}
           className={"projects-h2"}
         >
-          Проекты
+          {t("projects.main.header")}
         </LinedText>
         <div className={styles.mainContent__wrapper}>
           <div className={styles.mainContent__text}>
             <p className={cn(styles.projectsMain__text, "projectsMain-text")}>
-              В работе активно использую React 18+ и TypeScript – хуки,
-              управление состоянием, маршрутизацию, оптимизацию, доступность.
-              Для состояния применяю Redux Toolkit (также знакома с Zustand),
-              для маршрутизации – React Router. Настраивала сборку на Webpack и
-              Vite, разбираюсь в code splitting, мемоизации, виртуализации, умею
-              работать с тяжёлыми состояниями.
+              {t("projects.main.p1")}
             </p>
             <p className={cn(styles.projectsMain__text, "projectsMain-text")}>
-              Интегрирую фронтенд с REST, GraphQL, WebSocket/SSE, знаю
-              OpenAPI/Swagger, использую Axios и Postman. Понимаю основы
-              безопасности: CSP, XSS mitigation, разграничение прав. Уделяю
-              внимание качеству: Jest / Vitest, Playwright / Cypress,
-              Lighthouse, AXE, Storybook, ESLint, Prettier.
+              {t("projects.main.p2")}
             </p>
             <p className={cn(styles.projectsMain__text, "projectsMain-text")}>
-              Поддерживаю брендинг, локализацию, PWA-сценарии, роли и права.
-              Работаю с бэкенд-, AI- и платформенными командами, чтобы сценарии
-              стабильно работали. Знакома с Docker, CI/CD (GitHub Actions /
-              GitLab CI), имею опыт с дизайн-системами и компонентными
-              библиотеками. Также готова работать с Svelte / SvelteKit (для
-              поддержки OpenWebUI) и развиваться в AI / LLM / data-driven
-              продуктах.
+              {t("projects.main.p3")}
             </p>
             {!isSmallVariant && (
               <button
@@ -118,7 +105,7 @@ export const MainSlide = ({
                 className={styles.btn}
                 onClick={() => setActive()}
               >
-                Посмотреть все проекты
+                {t("projects.main.showAllBtn")}
               </button>
             )}
           </div>
@@ -128,27 +115,31 @@ export const MainSlide = ({
                 ref={firstStatRef}
                 className={cn(styles.statistics__number, "statistics-number")}
               >
-                6
+                7
               </span>
               <span className={"statistics-text"}>
-                полноценных
+                {t("projects.main.stats.stat1start")}
                 <br />
-                проектов
+                {t("projects.main.stats.stat1end")}
               </span>
             </p>
             <p className={styles.statistics__item}>
-              <span className={"statistics-text"}>Работала с</span>{" "}
+              <span className={"statistics-text"}>
+                {t("projects.main.stats.stat2start")}
+              </span>{" "}
               <span
                 ref={secondStatRef}
                 className={cn(styles.statistics__number, "statistics-number")}
               >
-                5
+                7
               </span>{" "}
-              <span className={"statistics-text"}>коммандами</span>
+              <span className={"statistics-text"}>
+                {t("projects.main.stats.stat2end")}
+              </span>
             </p>
           </div>
         </div>
-        {isSmallVariant && <ProjectsCarousel />}
+        {/* {isSmallVariant && <ProjectsCarousel />} */}
       </div>
     </div>
   );
