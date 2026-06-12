@@ -1,6 +1,6 @@
 import type { TCoords } from "~components/stack/components/stack-items/stack-items";
 import styles from "./stack-item.module.scss";
-import { type CSSProperties, type RefObject } from "react";
+import { type CSSProperties } from "react";
 import cn from "classnames";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -16,7 +16,7 @@ type TStackItem = {
     description: string;
     icon?: string;
   }[];
-  ref: RefObject<HTMLParagraphElement>;
+  ref: (element: HTMLParagraphElement | null) => void;
   coords?: TCoords;
   dir?: "left" | "right" | "middle";
   padding: string;

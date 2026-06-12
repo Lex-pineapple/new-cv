@@ -5,7 +5,7 @@ import "swiper/css/pagination";
 
 import styles from "./projects-carousel.module.scss";
 import type { CSSProperties } from "react";
-import { useModalContext } from "~/providers";
+// import { useModalContext } from "~/providers";
 import cn from "classnames";
 import { useMediaQuery } from "usehooks-ts";
 
@@ -41,8 +41,15 @@ const projectsData = [
   },
 ];
 
+// type TProjectData = {
+//   imgSrc: string;
+//   title: string;
+//   description: string;
+//   chivos: [];
+// };
+
 export const ProjectsCarousel = () => {
-  const { onModalClick } = useModalContext();
+  // const { onModalClick } = useModalContext();
   const isTablet = useMediaQuery("(width < 900px)");
   const isMobile = useMediaQuery("(width < 500px)");
 
@@ -61,6 +68,13 @@ export const ProjectsCarousel = () => {
         watchOverflow={false}
         pagination={{ clickable: true, el: ".pagination-prj" }}
       >
+        {/* {(t("projects.arrayData", { returnObjects: true }) as TReviews[]).map(
+          (item) => (
+            <SwiperSlide>
+              <ReviewCard {...item} />
+            </SwiperSlide>
+          ),
+        )} */}
         {projectsData.map((item) => (
           <SwiperSlide style={{ width: "300px" }}>
             <div
@@ -70,7 +84,7 @@ export const ProjectsCarousel = () => {
                   "--bg-img": `url('${item.imgSrc}')`,
                 } as CSSProperties
               }
-              onClick={() => onModalClick(item.data)}
+              // onClick={() => onModalClick(item?.data)}
             >
               <div className={styles.card__title}>{item.title}</div>
             </div>

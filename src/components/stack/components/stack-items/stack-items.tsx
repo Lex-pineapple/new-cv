@@ -30,7 +30,7 @@ export const StackItems = ({
   className,
   position,
 }: TStackItems) => {
-  const itemRefs = useRef<HTMLParagraphElement[]>([]);
+  const itemRefs = useRef<(HTMLParagraphElement | null)[]>([]);
   const [paths, setPaths] = useState<string[]>([]);
   const [circleCoords, setCircleCoords] = useState<TCoords[]>([]);
   const isTablet = useMediaQuery("(height < 1200px)");
