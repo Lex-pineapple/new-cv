@@ -10,24 +10,44 @@ const stack = [
     name: "TypeScript",
   },
   {
-    icon: "",
+    icon: "/icons/js-icon.svg",
+    name: "JavaScript",
+  },
+  {
+    icon: "/icons/html-icon.svg",
+    name: "HTML",
+  },
+  {
+    icon: "/icons/css-icon.svg",
+    name: "CSS/SCSS",
+  },
+  {
+    icon: "/icons/react-icon.svg",
     name: "React",
   },
   {
-    icon: "",
-    name: "Node.js",
+    icon: "/icons/nextjs-icon.svg",
+    name: "Next.js",
   },
   {
-    icon: "",
-    name: "Node.js",
+    icon: "/icons/cssmodules-icon.svg",
+    name: "CSS Modules",
   },
   {
-    icon: "",
-    name: "Node.js",
+    icon: "/icons/ant-design-icon.svg",
+    name: "Ant Design",
   },
   {
-    icon: "",
-    name: "Node.js",
+    icon: "/icons/jest-icon.svg",
+    name: "Jest",
+  },
+  {
+    icon: "/icons/cypress-icon.svg",
+    name: "Cypress",
+  },
+  {
+    icon: "/icons/axios-icon.svg",
+    name: "Axios",
   },
 ];
 

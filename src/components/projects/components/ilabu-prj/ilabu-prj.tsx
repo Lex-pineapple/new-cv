@@ -6,67 +6,67 @@ import type { TWithClassname } from "~types/general";
 
 const stack = [
   {
-    icon: "",
+    icon: "/icons/ts-icon.svg",
     name: "TypeScript",
   },
   {
-    icon: "",
+    icon: "/icons/js-icon.svg",
     name: "JavaScript",
   },
   {
-    icon: "",
+    icon: "/icons/html-icon.svg",
     name: "HTML",
   },
   {
-    icon: "",
+    icon: "/icons/css-icon.svg",
     name: "CSS/SCSS",
   },
   {
-    icon: "",
+    icon: "/icons/react-icon.svg",
     name: "React",
   },
   {
-    icon: "",
+    icon: "/icons/redux-icon.svg",
     name: "Redux",
   },
   {
-    icon: "",
+    icon: "/icons/redux-icon.svg",
     name: "RTK Query",
   },
   {
-    icon: "",
+    icon: "/icons/chakraui-icon.svg",
     name: "Chakra UI",
   },
   {
-    icon: "",
+    icon: "/icons/nestjs-icon.svg",
     name: "NestJS",
   },
   {
-    icon: "",
+    icon: "/icons/postgresql-icon.svg",
     name: "PostgreSQL",
   },
   {
-    icon: "",
+    icon: "/icons/jest-icon.svg",
     name: "Jest",
   },
   {
-    icon: "",
+    icon: "/icons/cypress-icon.svg",
     name: "Cypress",
   },
   {
-    icon: "",
+    icon: "/icons/reacthookform-icon.svg",
     name: "React Hook Form",
   },
   {
-    icon: "",
+    icon: "/icons/docker-icon.svg",
     name: "Docker",
   },
   {
-    icon: "",
+    icon: "/icons/github-actions.svg",
     name: "Github Actions",
   },
   {
-    icon: "",
+    icon: "/icons/vite-icon.svg",
     name: "Vite",
   },
 ];

@@ -5,28 +5,68 @@ import type { TWithClassname } from "~types/general";
 
 const stack = [
   {
-    icon: "",
+    icon: "/icons/js-icon.svg",
+    name: "JavaScript",
+  },
+  {
+    icon: "/icons/ts-icon.svg",
     name: "TypeScript",
   },
   {
-    icon: "",
+    icon: "/icons/html-icon.svg",
+    name: "HTML",
+  },
+  {
+    icon: "/icons/css-icon.svg",
+    name: "CSS/SCSS",
+  },
+  {
+    icon: "/icons/react-icon.svg",
     name: "React",
   },
   {
-    icon: "",
-    name: "Node.js",
+    icon: "/icons/nextjs-icon.svg",
+    name: "Next.js",
   },
   {
-    icon: "",
-    name: "Node.js",
+    icon: "/icons/fastify-icon.svg",
+    name: "Fastify",
   },
   {
-    icon: "",
-    name: "Node.js",
+    icon: "/icons/mongodb-icon.svg",
+    name: "MongoDB",
   },
   {
-    icon: "",
-    name: "Node.js",
+    icon: "/icons/ant-design-icon.svg",
+    name: "Ant Design",
+  },
+  {
+    icon: "/icons/jest-icon.svg",
+    name: "Jest",
+  },
+  {
+    icon: "/icons/cypress-icon.svg",
+    name: "Cypress",
+  },
+  {
+    icon: "/icons/formik-icon.svg",
+    name: "Formik",
+  },
+  {
+    icon: "/icons/axios-icon.svg",
+    name: "Axios",
+  },
+  {
+    icon: "/icons/redux-icon.svg",
+    name: "Redux",
+  },
+  {
+    icon: "/icons/redux-icon.svg",
+    name: "Redux Saga/Redux Thunk",
+  },
+  {
+    icon: "/icons/redux-icon.svg",
+    name: "RTK Query",
   },
 ];
 
