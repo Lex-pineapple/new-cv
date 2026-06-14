@@ -13,7 +13,6 @@ type TStackItem = {
   name: string;
   itemChildren: {
     name: string;
-    description: string;
     icon?: string;
   }[];
   ref: (element: HTMLParagraphElement | null) => void;

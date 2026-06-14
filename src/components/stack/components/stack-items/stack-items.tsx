@@ -15,7 +15,6 @@ type TStackItems = {
     children: {
       icon?: string;
       name: string;
-      description: string;
     }[];
     color: string;
   }[];
@@ -33,7 +32,6 @@ export const StackItems = ({
   const itemRefs = useRef<(HTMLParagraphElement | null)[]>([]);
   const [paths, setPaths] = useState<string[]>([]);
   const [circleCoords, setCircleCoords] = useState<TCoords[]>([]);
-  const isTablet = useMediaQuery("(height < 1200px)");
   const isMobile = useMediaQuery("(width <= 600px)");
 
   const updatePath = () => {
