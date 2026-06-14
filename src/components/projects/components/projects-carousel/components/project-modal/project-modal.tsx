@@ -78,9 +78,11 @@ export const ProjectModal = ({
               }) as TChivo[]
             ).map((item) => (
               <div className={styles.tasks__item}>
-                <div className={styles.tasks__iconWrapper}>
-                  <img src={item.icon} />
-                </div>
+                {item.icon && (
+                  <div className={styles.tasks__iconWrapper}>
+                    <img src={item.icon} />
+                  </div>
+                )}
                 <div className={styles.tasks__text}>{item.text}</div>
               </div>
             ))}

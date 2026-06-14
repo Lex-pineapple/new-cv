@@ -66,7 +66,9 @@ export const PrjTemplate = ({
               }) as TChivo[]
             ).map((item) => (
               <div
-                className={cn(styles.prjAchievements__item, "prj-achievement")}
+                className={cn(styles.prjAchievements__item, "prj-achievement", {
+                  [styles.hasIcon]: item.icon,
+                })}
               >
                 {item.icon && (
                   <div>
