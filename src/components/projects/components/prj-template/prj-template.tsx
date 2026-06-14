@@ -68,12 +68,14 @@ export const PrjTemplate = ({
               <div
                 className={cn(styles.prjAchievements__item, "prj-achievement")}
               >
-                <div>
-                  <img
-                    className={styles.prjAchievements__img}
-                    src={item.icon}
-                  />
-                </div>
+                {item.icon && (
+                  <div>
+                    <img
+                      className={styles.prjAchievements__img}
+                      src={item.icon}
+                    />
+                  </div>
+                )}
                 <p className={styles.prjAchievements__text}>{item.text}</p>
               </div>
             ))}

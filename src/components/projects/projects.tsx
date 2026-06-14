@@ -3,17 +3,14 @@ import type { TWithClassname } from "~types/general";
 import styles from "./projects.module.scss";
 import { useRef } from "react";
 import { MainSlide } from "~components/projects/components/main-slide";
-import { IlabuPrj } from "~components/projects/components/ilabu-prj";
-import { ClevertecSitePrj } from "~components/projects/components/clevertec-site-prj";
-import { CleverscopePrj } from "~components/projects/components/cleverscope-prj";
-import { RetroBonusPrj } from "~components/projects/components/retro-bouns-prj";
-import { PlatformPrj } from "~components/projects/components/platform-prj";
-import { LKPPrj } from "~components/projects/components/lkp-prj";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useMediaQuery } from "usehooks-ts";
 import { ModalProvider } from "~/providers";
-import { WebClient } from "~components/projects/components/web-client";
+import { projectsData } from "~components/projects/consts/general";
+import { PrjTemplate } from "~components/projects/components/prj-template";
+import { ILabuMockup } from "~components/projects/components/ilabu-mockup";
+import { ClevertecMockup } from "~components/projects/components/clevertec-mockup";
 
 gsap.registerPlugin(useGSAP);
 
@@ -22,9 +19,15 @@ export type TPrjType = {
   onBackwardsClick: (id: number) => void;
 };
 
+const getMockup = (translationKey: string) => {
+  if (translationKey === "ilabu") return <ILabuMockup />;
+  if (translationKey === "clevertec-site") return <ClevertecMockup />;
+  return null;
+};
+
 export const Projects = ({ className }: TWithClassname) => {
   const projectsRef = useRef<HTMLDivElement>(null);
-  const isDesktopSmall = useMediaQuery("(width < 1400px)");
+  const isDesktopSmall = useMediaQuery("(width <= 1440px)");
 
   const { contextSafe } = useGSAP(() => {});
 
@@ -43,6 +46,7 @@ export const Projects = ({ className }: TWithClassname) => {
     });
   });
   const onShowAllProjects = contextSafe(() => {
+    gsap.to(window, { duration: 1, scrollTo: { y: "#projects" } });
     const showAllTween = gsap.to("#projects", {
       xPercent: -12.5,
       ease: "power1.inOut",
@@ -89,45 +93,24 @@ export const Projects = ({ className }: TWithClassname) => {
           setActive={() => onShowAllProjects()}
           isSmallVariant={isDesktopSmall}
         />
-        {!isDesktopSmall && (
-          <>
-            <IlabuPrj
-              onBackwardsClick={onPrjBackwards}
+        {!isDesktopSmall &&
+          projectsData.map((item, idx) => (
+            <PrjTemplate
+              key={item.translationKey}
+              id={idx + 1}
+              colorMain={item.colors.mainBig}
+              colorSecondary={item.colors.secondaryBig}
+              companyLogo={item.companyIcon}
+              imgSrc={item.imgSrc}
+              stack={item.stack}
               onForwardClick={onPrjForward}
-              className={styles.slide}
-            />
-            <ClevertecSitePrj
               onBackwardsClick={onPrjBackwards}
-              onForwardClick={onPrjForward}
+              translationKey={item.translationKey}
               className={styles.slide}
-            />
-            <CleverscopePrj
-              onBackwardsClick={onPrjBackwards}
-              onForwardClick={onPrjForward}
-              className={styles.slide}
-            />
-            <RetroBonusPrj
-              onBackwardsClick={onPrjBackwards}
-              onForwardClick={onPrjForward}
-              className={styles.slide}
-            />
-            <WebClient
-              onBackwardsClick={onPrjBackwards}
-              onForwardClick={onPrjForward}
-              className={styles.slide}
-            />
-            <PlatformPrj
-              onBackwardsClick={onPrjBackwards}
-              onForwardClick={onPrjForward}
-              className={styles.slide}
-            />
-            <LKPPrj
-              onBackwardsClick={onPrjBackwards}
-              onForwardClick={onPrjForward}
-              className={styles.slide}
-            />
-          </>
-        )}
+            >
+              {getMockup(item.translationKey)}
+            </PrjTemplate>
+          ))}
       </section>
     </ModalProvider>
   );

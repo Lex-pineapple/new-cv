@@ -83,7 +83,7 @@ export const StackItem = ({
         >
           {itemChildren.map((item) => {
             return (
-              <div className={cn("inner-item", styles.inner)}>
+              <div className={cn("inner-item", styles.inner)} key={item.name}>
                 <img className={styles.inner__img} src={item.icon} />
                 <div className={styles.inner__text}>{item.name}</div>
               </div>

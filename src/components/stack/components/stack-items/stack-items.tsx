@@ -156,6 +156,7 @@ export const StackItems = ({
       {items.map((item, idx) => {
         return (
           <StackItem
+            key={item.name}
             path={paths[idx]}
             color={item.color}
             name={item.name}
@@ -163,7 +164,7 @@ export const StackItems = ({
             ref={(e) => (itemRefs.current[idx] = e)}
             coords={circleCoords[idx]}
             dir={position}
-            padding={isTablet ? "0" : `${Math.exp(4) * idx}px`}
+            padding={"0"}
           />
         );
       })}

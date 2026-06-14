@@ -53,8 +53,6 @@ export const Reviews = ({ className }: TWithClassname) => {
     });
   });
 
-  console.log(t("reviews.reviews", { returnObjects: true }));
-
   return (
     <section id="reviews" className={cn(className, styles.root)}>
       <div className={styles.sectionWrapper}>
@@ -76,8 +74,6 @@ export const Reviews = ({ className }: TWithClassname) => {
             modules={[Pagination]}
             spaceBetween={50}
             slidesPerView={isMobile ? 1 : 2}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
             pagination={{ clickable: true, el: ".pagination" }}
           >
             {(t("reviews.reviews", { returnObjects: true }) as TReviews[]).map(

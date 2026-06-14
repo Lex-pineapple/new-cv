@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import type { TProjectData } from "~components/projects/components/projects-carousel/components/project-modal/project-modal";
+import type { TProjectData } from "~components/projects/consts/general";
 
 type TModalContext = {
   onModalClick: (data: TProjectData) => void;

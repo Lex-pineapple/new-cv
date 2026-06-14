@@ -26,8 +26,6 @@ export const Header = ({ onLinkClick }: THeader) => {
   const [navOpen, setNavOpen] = useState(false);
   const { t } = useTranslation();
 
-  console.log("t", t("header.links.about"));
-
   const onAnchorClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
     onLinkClick(href);

@@ -258,15 +258,15 @@ $m: list.append($m, from 50% + $d*math.cos(0) 50% + $d*math.sin(0), comma);
     }
 
     &_circle {
-      right: -5%;
+      right: 5%;
     }
 
     &_star {
-      right: -5%;
+      right: 5%;
     }
 
     &_clover {
-      right: 0;
+      right: 10%;
     }
   }
 
@@ -286,7 +286,7 @@ $m: list.append($m, from 50% + $d*math.cos(0) 50% + $d*math.sin(0), comma);
 @media screen and (width <=1050px) {
   .root {
     height: auto;
-    padding-top: var(--header-h);
+    padding-top: calc(var(--header-h) - 20px)
   }
 
   .box {
@@ -312,7 +312,7 @@ $m: list.append($m, from 50% + $d*math.cos(0) 50% + $d*math.sin(0), comma);
 @media screen and (width <=900px) {
   .sectionWrapper {
     flex-direction: column;
-    margin-top: 90px;
+    margin-top: calc(var(--header-h) - 16px);
     align-items: center;
     margin-bottom: 60px;
   }
@@ -377,10 +377,10 @@ $m: list.append($m, from 50% + $d*math.cos(0) 50% + $d*math.sin(0), comma);
   .headline {
     font-size: 64px;
     line-height: 60px;
+    margin-top: 0;
   }
 
   .shape {
-
     &_circle,
     &_clover,
     &_star {

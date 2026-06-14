@@ -14,10 +14,10 @@ export const Closer = ({ color = "white" }: TCloser) => {
       <path
         fill="none"
         stroke={color}
-        stroke-dasharray="12"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeDasharray="12"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         d="M12 12l7 7M12 12l-7 -7M12 12l-7 7M12 12l7 -7"
       >
         <animate

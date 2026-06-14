@@ -26,47 +26,66 @@ export const Main = ({ className }: TWithClassname) => {
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
         // on load animations
-        gsap.from("#shape-clover", {
-          opacity: 0,
-          y: 100,
-          duration: 1,
-          stagger: 0.2,
-          ease: "power2.out",
+        mm.add("(width > 1390px)", () => {
+          gsap.from("#shape-flower", {
+            opacity: 0,
+            x: -100,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power2.out",
+          });
+          gsap.to("#shape-flower", {
+            rotation: -15,
+            duration: 4,
+            repeat: -1,
+            yoyo: true,
+            ease: "power1.inOut",
+          });
         });
-        gsap.to("#shape-clover", {
-          rotation: 45,
-          duration: 3,
-          repeat: -1,
-          yoyo: true,
-          ease: "power1.inOut",
+        mm.add("(width > 550px)", () => {
+          gsap.from("#shape-clover", {
+            opacity: 0,
+            y: 100,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power2.out",
+          });
+          gsap.to("#shape-clover", {
+            rotation: 45,
+            duration: 3,
+            repeat: -1,
+            yoyo: true,
+            ease: "power1.inOut",
+          });
+          gsap.from("#shape-star", {
+            opacity: 0,
+            duration: 2,
+            stagger: 0.2,
+            ease: "power1.inOut",
+          });
+          gsap.to("#shape-star", {
+            scale: 0.5,
+            duration: "random(0.5, 4)",
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+          });
+
+          gsap.from("#shape-circle", {
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power1.out",
+          });
+          gsap.to("#shape-circle", {
+            y: 20,
+            duration: 2,
+            repeat: -1,
+            yoyo: true,
+            ease: "bounce.out",
+          });
         });
-        gsap.from("#shape-flower", {
-          opacity: 0,
-          x: -100,
-          duration: 1,
-          stagger: 0.2,
-          ease: "power2.out",
-        });
-        gsap.to("#shape-flower", {
-          rotation: -15,
-          duration: 4,
-          repeat: -1,
-          yoyo: true,
-          ease: "power1.inOut",
-        });
-        gsap.from("#shape-star", {
-          opacity: 0,
-          duration: 2,
-          stagger: 0.2,
-          ease: "power1.inOut",
-        });
-        gsap.to("#shape-star", {
-          scale: 0.5,
-          duration: "random(0.5, 4)",
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-        });
+
         gsap.from("#shape-star-left", {
           opacity: 0,
           duration: 2,
@@ -80,19 +99,7 @@ export const Main = ({ className }: TWithClassname) => {
           yoyo: true,
           ease: "sine.inOut",
         });
-        gsap.from("#shape-circle", {
-          opacity: 0,
-          duration: 1,
-          stagger: 0.2,
-          ease: "power1.out",
-        });
-        gsap.to("#shape-circle", {
-          y: 20,
-          duration: 2,
-          repeat: -1,
-          yoyo: true,
-          ease: "bounce.out",
-        });
+
         const splitLN = SplitText.create("#h1-lastName", { type: "chars" });
         gsap.from(splitLN.chars, {
           y: 40,

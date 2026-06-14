@@ -26,7 +26,7 @@ function App() {
   const { contextSafe } = useGSAP(
     () => {
       const mm = gsap.matchMedia();
-      mm.add("(width > 1300px)", () => {
+      mm.add("(width > 1400px) and (height > 900px)", () => {
         gsap.context(() => {
           gsap.timeline({
             scrollTrigger: {
@@ -68,7 +68,7 @@ function App() {
   const onHeaderLinkClick = contextSafe((href: string) => {
     gsap.to(window, {
       duration: 2,
-      scrollTo: { y: href, autoKill: true },
+      scrollTo: { y: href, offsetY: 100, autoKill: true },
       ease: "power2.inOut",
     });
   });

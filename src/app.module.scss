@@ -20,6 +20,16 @@
   display: flex;
 }
 
+@media screen and (height <= 900px) {
+    .fullSlide:not(:first-child) {
+    margin: var(--header-h) 0;
+  }
+
+  .fullSlide:last-child {
+    margin-bottom: 0;
+  }
+}
+
 @media screen and (width <= 900px) {
   .fullSlide {
     height: 100%;

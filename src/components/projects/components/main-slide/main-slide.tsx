@@ -5,7 +5,7 @@ import cn from "classnames";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
-// import { ProjectsCarousel } from "~components/projects/components/projects-carousel";
+import { ProjectsCarousel } from "~components/projects/components/projects-carousel";
 import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(useGSAP);
@@ -139,7 +139,7 @@ export const MainSlide = ({
             </p>
           </div>
         </div>
-        {/* {isSmallVariant && <ProjectsCarousel />} */}
+        {isSmallVariant && <ProjectsCarousel />}
       </div>
     </div>
   );
