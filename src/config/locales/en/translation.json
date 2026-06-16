@@ -14,43 +14,202 @@
     "lastName": "Sonich",
     "firstName": "Anastasiya",
     "position": "Frontend-developer",
-    "tagline": "Оживляю макеты с помощью чистого кода и передовых технологий",
-    "textMainOne": "Специализируюсь на создании динамических веб-приложений (SPA).",
-    "textMainTwo": "Проектирую поддерживаемую архитектуру интерфейса, уделяя внимание деталям и производительности."
+    "tagline": "I bring designs to live using clean code and cutting-edge technologies",
+    "textMainOne": "My specialty is dynamic web applications (SPA).",
+    "textMainTwo": "I design maintainable interface architecture with attention to detail and performance."
   },
   "about": {
     "header": "About",
-    "tagline": "Я фронтенд-разработчик с 4-летним коммерческим опытом.",
-    "p1": "В работе активно использую React 18+ и TypeScript – хуки, управление состоянием, маршрутизацию, оптимизацию, доступность. Для состояния применяю Redux Toolkit (также знакома с Zustand), для маршрутизации – React Router. Настраивала сборку на Webpack и Vite, разбираюсь в code splitting, мемоизации, виртуализации, умею работать с тяжёлыми состояниями.",
-    "p2": "Интегрирую фронтенд с REST, GraphQL, WebSocket/SSE, знаю OpenAPI/Swagger, использую Axios и Postman. Понимаю основы безопасности: CSP, XSS mitigation, разграничение прав. Уделяю внимание качеству: Jest / Vitest, Playwright / Cypress, Lighthouse, AXE, Storybook, ESLint, Prettier.",
-    "p3": "Поддерживаю брендинг, локализацию, PWA-сценарии, роли и права. Работаю с бэкенд-, AI- и платформенными командами, чтобы сценарии стабильно работали. Знакома с Docker, CI/CD (GitHub Actions / GitLab CI), имею опыт с дизайн-системами и компонентными библиотеками. Также готова работать с Svelte / SvelteKit (для поддержки OpenWebUI) и развиваться в AI / LLM / data-driven продуктах."
+    "tagline": "I am a Front-end developer with 4 years of commercial experience",
+    "p1": "I specialize in building scalable, fast, and accessible web applications using React and TypeScript. What I value most is a systematic approach: from managing complex state (Redux Toolkit, Zustand), optimizing builds (Vite, Webpack), integrating APIs of any complexity (tRTC, REST, GraphQL, WebSockets) to ensuring code quality through testing (Jest, Playwright) and CI/CD automation.",
+    "p2": "Besides possessing strong analytical skills and an ability to decompose complex problems and find optimal technical solutions, I also easily adapt to new technologies and team processes.",
+    "p3": "Finding common ground with backend, BA/CA, and design teams is a breeze to me; moreover, I can rationalize technical solutions and translate complex engineering problems into business terms. I am highly adaptable, which allows me to quickly delve into new topics, take responsibility for architecture, and work effectively in a multifunctional environment. English: C1 (I am fluent in technical communication, participate in conference calls, and write documentation)."
   },
   "stack": {
-    "header": "Мой стек"
+    "header": "My stack"
+  },
+  "projects": {
+    "main": {
+      "header": "Projects",
+      "p1": "Over the past few years, I've been involved in seven large-scale projects, in four of which (iLabU, Retro-bonuses, Industrial Integration Platform, and Partner Cabinet) I played a role as a key engineer. Although my primary focus is front-end development, I also worked as a full-stack developer on the iLabU and Platform projects. During my time there, I've successfully completed tasks at the intersection of technologies: from designing NestJS REST APIs and PostgreSQL databases to creating Telegram bots and automating Node.js scripts.",
+      "p2": "My main achievement was a significant increase in business metrics and process digitalization. As part of the Partner Cabinet, I designed and implemented key modules that increased the level of digitalization in the agency channel from 6% to ~50%. Thanks to the careful migration of functionality to a separate NPM package and the integration of related services, I was able to increase code reusability within the company and increase the flow of commercial requests by 15%.",
+      "p3": "I'm skilled at accelerating product releases by developing clear technical documentation and actively communicating with teams and clients. I'm a good listener, so I quickly grasp the context of tasks; at the same time I like taking responsibility for technical decisions, which helps me maintain focus on the outcome even in uncertain times.",
+      "showAllBtn": "Show all projects",
+      "stats": {
+        "stat1start": "fully realized",
+        "stat1end": "projects",
+        "stat2start": "Worked with",
+        "stat2end": "teams"
+      }
+    },
+    "ilabu": {
+      "imgSrc": "/ilabu-bg.png",
+      "title": "iLabU Kit Activation Website",
+      "description": "A mobile web app for express activation and customization of medical home testing kits. The service allows users to purchase biopsy kits, register them via QR code, customize laboratory tests, securely store personal data, and pay for services online.",
+      "chivos": [
+        {
+          "icon": "",
+          "text": "I designed a fault-tolerant architecture for backend and frontend services from scratch, laid the foundation for autonomous cross-functional teamwork, and eliminated critical architectural errors during the development phase."
+        },
+        {
+          "icon": "",
+          "text": "Also I accelerated product release (Time-to-Market) by 28% by establishing effective interactions with the client and quickly transforming business requirements into detailed technical documentation (BRD/SRS); this also reduced the number of reworks during the development phase by 40%."
+        },
+        {
+          "icon": "",
+          "text": "I developed a modular SPA application architecture using React, Redux, and Chakra UI. This enabled high client-side performance, convenient state management, and a unified visual style through the creation of reusable components."
+        }
+      ]
+    },
+    "clevertec-site": {
+      "imgSrc": "/clevertec-bg.jpg",
+      "title": "Clevertec (Belarusian website)",
+      "description": "A responsive corporate website for IT company Clevertec. The platform serves as a key tool for brand positioning in the Belarusian market, including structured sections featuring a portfolio of completed projects, the team's expertise, and the company's key areas of activity.",
+      "chivos": [
+        {
+          "icon": "",
+          "text": "I created a responsive corporate website design using the React and Next.js stack and implemented smooth interface animations, resulting in a 32% increase in user engagement (Time on Site)."
+        },
+        {
+          "icon": "",
+          "text": "I implemented dynamic routing (Next.js App Router) and developed reusable components for key sections of the site; the modular structure reduced page load time by 20% and simplified content scaling."
+        },
+        {
+          "icon": "",
+          "text": "I also actively collaborated with the project team and participated in cross-testing functionality; this allowed me to identify critical bugs early on and reduce the website launch time by two weeks compared to the original plan (Time-to-Market)."
+        }
+      ]
+    },
+    "cleverscope": {
+      "imgSrc": "/clevertec-bg.jpg",
+      "title": "CleverScope",
+      "description": "An application for managing the company's core business processes: employee management (calibrations, vacation tracking, personal and contact information for employees, salaries, and sending CVs to clients), project and client management, contract and appendix management, and document management.",
+      "chivos": [
+        {
+          "icon": "",
+          "text": "I Designed test servers based on Fastify and MongoDB for intern training, which helped automate the onboarding process for new employees and reduce the risk of data corruption in the main development environment."
+        },
+        {
+          "icon": "",
+          "text": "I completely refactored the internal training administration panel and migrated the interface to the Ant Design component library. These changes increased the interface's responsiveness, gave the service a unified design consistent with the company's design, and simplified future codebase maintenance."
+        },
+        {
+          "icon": "",
+          "text": "Additionally I increased unit and e2e test coverage of key application modules using Jest and Cypress by 50–60%, which significantly reduced the number of bugs when releasing new features."
+        }
+      ]
+    },
+    "retro-bonus": {
+      "imgSrc": "/alfaleasing-bg.jpg",
+      "title": "Retro-bonuses",
+      "description": "A platform combining frontend, backend, and 1C components, designed to automate the process of sending commercial proposals and collecting them. It also includes the ability to organize dealer proposal archives and track retro-bonus and subsidy payments.",
+      "chivos": [
+        {
+          "icon": "",
+          "text": "I created dynamic forms for submitting commercial proposals and approving programs using a combination of React, Next.js, and React Hook Form, with validation via the zod library and display according to an internal status model; this significantly reduced the time it took to process applications."
+        },
+        {
+          "icon": "",
+          "text": "Спроектировала и внедрила специализированную неавторизованную зону для внешних пользователей, обеспечив безопасный и быстрый доступ к просмотру и подаче коммерческих предложений без обязательной регистрации."
+        },
+        {
+          "icon": "",
+          "text": "Also I configured data exchange, redirect processing, and front-end integration with back-end services and the Partner Cabinet; this increased data transfer stability and ensured a seamless user experience."
+        },
+        {
+          "icon": "",
+          "text": "Moveover I successfully planned and implemented the integration of the Retro-Bonus module's functionality into a separate internal NPM package, which reduced the development time for similar features in other company projects by 20% due to code reuse."
+        }
+      ]
+    },
+    "web-client": {
+      "imgSrc": "/rgs-bg.jpg",
+      "title": "Web-client",
+      "description": "Web client for online registration of sports insurance policies.",
+      "chivos": [
+        {
+          "icon": "",
+          "text": "I analyzed the client's complex requirements and developed a calculator for determining the insurance amount, which automated the process and reduced the influence of the human factor in calculations."
+        },
+        {
+          "icon": "",
+          "text": "I also built dynamic preliminary agreement forms (PA) using React and React Hook Form and implemented a blocking feature for incompatible sports; this eliminated the possibility of sending incorrect requests and reduced the workload for support operators."
+        },
+        {
+          "icon": "",
+          "text": "On client's request I added new sports and corresponding rates to the calculator's interface and internal logic, while adhering to business logic requirements and maintaining high cost calculation speed."
+        },
+        {
+          "icon": "",
+          "text": "Furthermore I actively participated in strategic planning, task decomposition and evaluation, as well as in the design of the application architecture, which helped the team more accurately meet sprint deadlines and laid the foundation for easy expansion of functionality."
+        }
+      ]
+    },
+    "platform": {
+      "imgSrc": "/alfaleasing-bg.jpg",
+      "title": "Industrial Integration Platform",
+      "description": "An implemented integration with partners through their APIs to receive customer requests and transmit transaction information.",
+      "chivos": [
+        {
+          "icon": "",
+          "text": "I developed and optimized Node.js scripts for automated mass data conversion, which accelerated the onboarding process and connection of new dealer partners by 39%."
+        },
+        {
+          "icon": "",
+          "text": "I also created a Telegram bot ecosystem for the platform and dealers using Node.js, Express.js, and Telegraf.js. The bots had car booking modules, smart notifications, and API integration with backend services. This created a new sales channel and reduced the workload for managers."
+        },
+        {
+          "icon": "",
+          "text": "Additionally I designed and implemented an architecture for stable processing of asynchronous message and event queues in bots (RabbitMQ); this eliminated data transfer delays and ensured instant interface response during peak loads."
+        },
+        {
+          "icon": "",
+          "text": "I led the support and development of existing services, translating business requirements into code, refactoring, and performance optimization based on user feedback; this helped reduce incidents and improve the stability of legacy code."
+        }
+      ]
+    },
+    "lkp": {
+      "imgSrc": "/alfaleasing-bg.jpg",
+      "title": "Partner's Cabinet",
+      "description": "The project aims to develop the leasing company's partner ecosystem by creating a unified digital personal account for agents, dealers, and other intermediaries involved in the sale of leasing products. The solution aims to transfer key transaction stages from disparate and partially manual processes to a centralized system where partners can independently initiate, manage, and monitor applications throughout all stages of the lifecycle.",
+      "chivos": [
+        {
+          "icon": "",
+          "text": "I developed and implemented new functional modules in the Partner's Cabinet – \"Retro Bonus\", \"Employees\" and \"Rent\" which increased the level of digitalization of the agency channel from 6% to ~50%."
+        },
+        {
+          "icon": "",
+          "text": "Additionally I migrated the \"Retro-Bonus\" module to a separate NPM package and performed comprehensive integration of related services; this allowed for the reuse of existing code and increased the number of commercial inquiries through the Partner's Cabinet by 15%."
+        },
+        {
+          "icon": "",
+          "text": "Futhermore I designed and implemented new registration forms for dealers and employees, and added a referral system for agent registration by invitation linked to a manager. This helped attract 23 million rubles to the deal portfolio in just two months after the release."
+        },
+        {
+          "icon": "",
+          "text": "I migrated projects to TypeScript and conducted extensive unit and Cypress testing of services, increasing the overall coverage rate to 82%, significantly reducing the number of regression bugs in production."
+        }
+      ]
+    }
   },
   "reviews": {
     "header": "Recommendations",
-    "tagline": "Что обо мне говорят мои руководители",
+    "tagline": "What my Technical Leads say about me",
     "reviews": [
       {
-        "name": "Mikhail Shelest",
-        "place": "Ктото гдето",
-        "text": "Таким образом, укрепление и развитие внутренней структуры не оставляет шанса для направлений прогрессивного развития. Банальные, но неопровержимые выводы, а также диаграммы связей заблокированы в рамках своих собственных рациональных ограничений. Принимая во внимание показатели успешности, новая модель организационной деятельности позволяет выполнить важные задания по разработке поэтапного и последовательного развития общества."
-      },
-      {
-        "name": "Алексей Володько",
-        "place": "Ктото гдето",
-        "text": "Таким образом, укрепление и развитие внутренней структуры не оставляет шанса для направлений прогрессивного развития. Банальные, но неопровержимые выводы, а также диаграммы связей заблокированы в рамках своих собственных рациональных ограничений. Принимая во внимание показатели успешности, новая модель организационной деятельности позволяет выполнить важные задания по разработке поэтапного и последовательного развития общества."
+        "name": "Mickhail Shelest",
+        "place": "Technical Head of Front-End Development Group at Alfa-Leasing",
+        "text": "While working with Alfa-Leasing, Anastasiya worked on several projects as a key front-end developer. She showed her good skills at one, and was transferred to another, more important and high-priority one. Her primary stack was React + NextJS. She participated in: discussing architectural decisions, including providing feedback; organizing the modular structure; converting to TS from JS; and covering the project with automated tests in Cypress. She also had to complete major refactoring tasks with preliminary unit test coverage, including using RTL. She made decisions independently, is a team player and has a proactive approach – she goes above and beyond what is asked and is committed to the outcome."
       }
     ]
   },
   "future": {
     "header": "Future",
-    "p1": "В рамках спецификации современных стандартов, некоторые особенности внутренней политики и по сей день остаются уделом либералов, которые жаждут быть в равной степени предоставлены сами себе. Но существующая теория требует от нас анализа анализа существующих паттернов поведения. Как принято считать, явные признаки победы институционализации ассоциативно распределены по отраслям.",
-    "p2": "Вот вам яркий пример современных тенденций — перспективное планирование предполагает независимые способы реализации направлений прогрессивного развития. Таким образом, сплочённость команды профессионалов предполагает независимые способы реализации дальнейших направлений развития."
+    "p1": "I'm currently open to challenging tasks and strive to develop in AI/LLM and data-driven products. My primary focus right now is evolving into a full-stack developer with a strong engineering foundation. I'm expanding my frontend arsenal with the Vue 3 and Nuxt.js ecosystem, while simultaneously delving deeper into the Node.js backend and its modern frameworks.",
+    "p2": "To fully understand and control the application lifecycle and build infrastructure independently, I'm immersed in DevOps practices, studying Kubernetes and deployment automation tools like werf. My goal is to build autonomous, scalable, and fault-tolerant products from database architecture to final deployment."
   },
   "contacts": {
     "header": "Contacts"
   },
-  "download-pdf": "Скачать классическое резюме"
+  "download-pdf": "Download a classic resume"
 }

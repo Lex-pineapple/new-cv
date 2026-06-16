@@ -10,6 +10,17 @@ export const ModalProvider = ({ children }: PropsWithChildren) => {
   const onModalClick = (data: TProjectData) => {
     setModalData(data);
     setIsOpen(true);
+
+    if (typeof window != "undefined" && window.document) {
+      document.body.style.overflow = "hidden";
+    }
+  };
+
+  const onModalClose = () => {
+    if (typeof window != "undefined" && window.document) {
+      document.body.style.overflow = "unset";
+    }
+    setIsOpen(false);
   };
 
   return (
@@ -19,11 +30,7 @@ export const ModalProvider = ({ children }: PropsWithChildren) => {
       }}
     >
       {children}
-      <ProjectModal
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        {...modalData}
-      />
+      <ProjectModal isOpen={isOpen} onClose={onModalClose} {...modalData} />
     </ModalContext.Provider>
   );
 };

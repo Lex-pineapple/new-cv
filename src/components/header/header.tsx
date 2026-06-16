@@ -4,8 +4,8 @@ import styles from "./header.module.scss";
 import { BurgerBtn } from "~components/header/components/burger-btn";
 import { useState } from "react";
 import cn from "classnames";
-// import { LangSwitcher } from "~components/lang-switcher";
 import { useTranslation } from "react-i18next";
+import { LangSwitcher } from "~components/lang-switcher";
 
 const LINKS = [
   { id: "home", href: "#main" },
@@ -55,12 +55,11 @@ export const Header = ({ onLinkClick }: THeader) => {
               ))}
             </ul>
           </nav>
-          {/* TODO: turn after translation to english */}
-          {/* {isMobile && (
+          {isMobile && (
             <div className={styles.langSwitcher__wrapper}>
               <LangSwitcher />
             </div>
-          )} */}
+          )}
         </div>
         {isMobile && (
           <BurgerBtn open={navOpen} onClick={() => setNavOpen(!navOpen)} />
