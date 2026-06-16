@@ -21,12 +21,12 @@ const contactData = [
   },
   {
     text: "Linkedin",
-    href: "mailto:pineapplepear55@gmail.com",
+    href: "www.linkedin.com/in/anastasiya-sonich-125412417",
     icon: "/linkedin-icon.svg",
   },
   {
     text: "Telegram",
-    href: "mailto:pineapplepear55@gmail.com",
+    href: "https://t.me/drummundBasse",
     icon: "/telegram-icon.svg",
   },
 ];
