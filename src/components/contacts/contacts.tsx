@@ -21,7 +21,7 @@ const contactData = [
   },
   {
     text: "Linkedin",
-    href: "www.linkedin.com/in/anastasiya-sonich-125412417",
+    href: "https://linkedin.com/in/anastasiya-sonich-125412417",
     icon: "/linkedin-icon.svg",
   },
   {
